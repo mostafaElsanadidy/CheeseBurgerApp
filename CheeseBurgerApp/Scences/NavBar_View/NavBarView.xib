@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavBarView" customModule="CheeseBurgerApp" customModuleProvider="target">
+            <connections>
+                <outlet property="notiLabel" destination="33R-SA-hWy" id="Klf-BV-8VE"/>
+                <outlet property="notiLabelView" destination="LuM-Mt-rMd" id="b7l-Ig-b5c"/>
+                <outlet property="titleLabel" destination="nP5-kj-7c9" id="pAB-SQ-4Pi"/>
+                <outlet property="view" destination="ZYa-gD-kQ7" id="ZE9-qt-Abs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ZYa-gD-kQ7">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LuM-Mt-rMd">
+                    <rect key="frame" x="352" y="6" width="22" height="22"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="900" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33R-SA-hWy">
+                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="OOB-B0-Chs"/>
+                                <constraint firstAttribute="width" constant="22" id="qki-A7-X61"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="10"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="7"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95018619299999996" green="0.39439713949999999" blue="0.36249518390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="33R-SA-hWy" secondAttribute="trailing" id="22u-aW-kiW"/>
+                        <constraint firstAttribute="height" secondItem="33R-SA-hWy" secondAttribute="height" id="QXg-KM-6Wy"/>
+                        <constraint firstAttribute="bottom" secondItem="33R-SA-hWy" secondAttribute="bottom" id="Vyh-6y-VVq"/>
+                        <constraint firstAttribute="width" secondItem="33R-SA-hWy" secondAttribute="width" id="ook-9B-m9G"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cee-Ya-cfB">
+                    <rect key="frame" x="30" y="20" width="24.5" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="CGl-Kx-FR5"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="line.horizontal.3" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" scale="large" weight="semibold"/>
+                    </state>
+                    <connections>
+                        <action selector="showSideMenu:" destination="-1" eventType="touchUpInside" id="KDC-qM-HPi"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-kj-7c9">
+                    <rect key="frame" x="178.5" y="27" width="57.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6n0-yD-I4e">
+                    <rect key="frame" x="354" y="25" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ESQ-qZ-PXK"/>
+                        <constraint firstAttribute="width" constant="30" id="qru-Xx-8r2"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" backgroundImage="what-is-the-white-shopping-bag-icon-1.jpg"/>
+                    <connections>
+                        <action selector="showOrdersCarPage:" destination="-1" eventType="touchUpInside" id="HnS-np-tW5"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="kbK-cb-XdW"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Cee-Ya-cfB" firstAttribute="centerY" secondItem="nP5-kj-7c9" secondAttribute="centerY" id="4fV-Ex-CUa"/>
+                <constraint firstItem="LuM-Mt-rMd" firstAttribute="bottom" secondItem="6n0-yD-I4e" secondAttribute="bottom" constant="-27" id="8xG-Ue-MX4"/>
+                <constraint firstItem="LuM-Mt-rMd" firstAttribute="trailing" secondItem="6n0-yD-I4e" secondAttribute="trailing" constant="-10" id="9eJ-9r-OGP"/>
+                <constraint firstItem="Cee-Ya-cfB" firstAttribute="leading" secondItem="kbK-cb-XdW" secondAttribute="leading" constant="30" id="FnM-PY-DGX"/>
+                <constraint firstItem="nP5-kj-7c9" firstAttribute="centerX" secondItem="ZYa-gD-kQ7" secondAttribute="centerX" id="JbJ-rR-9Am"/>
+                <constraint firstItem="nP5-kj-7c9" firstAttribute="centerY" secondItem="ZYa-gD-kQ7" secondAttribute="centerY" id="N7f-98-tbb"/>
+                <constraint firstAttribute="trailing" secondItem="6n0-yD-I4e" secondAttribute="trailing" constant="30" id="gen-iV-47B"/>
+                <constraint firstItem="6n0-yD-I4e" firstAttribute="centerY" secondItem="nP5-kj-7c9" secondAttribute="centerY" id="tFz-yf-ura"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="118.84057971014494" y="-437.27678571428572"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="what-is-the-white-shopping-bag-icon-1.jpg" width="256" height="256"/>
+    </resources>
+</document>
