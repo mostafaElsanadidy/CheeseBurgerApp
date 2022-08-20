@@ -1,0 +1,28 @@
+PODS:
+  - LGSegmentedControl (1.2.1)
+  - Segmentio (4.1)
+  - SwipeCellKit (2.7.1)
+  - UPCarouselFlowLayout (1.1.2)
+
+DEPENDENCIES:
+  - LGSegmentedControl
+  - Segmentio
+  - SwipeCellKit
+  - UPCarouselFlowLayout
+
+SPEC REPOS:
+  trunk:
+    - LGSegmentedControl
+    - Segmentio
+    - SwipeCellKit
+    - UPCarouselFlowLayout
+
+SPEC CHECKSUMS:
+  LGSegmentedControl: 80b6c522b0f0d98d3abfe15077cccf55a7641fe5
+  Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
+
+PODFILE CHECKSUM: 886f512a704e7dbddc6a5d5fef988224ab19538c
+
+COCOAPODS: 1.11.3

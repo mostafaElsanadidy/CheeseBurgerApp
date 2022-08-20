@@ -11,6 +11,8 @@
             <connections>
                 <outlet property="notiLabel" destination="33R-SA-hWy" id="Klf-BV-8VE"/>
                 <outlet property="notiLabelView" destination="LuM-Mt-rMd" id="b7l-Ig-b5c"/>
+                <outlet property="popVCBttn" destination="UJ8-OG-1DN" id="Hzq-7Q-MxR"/>
+                <outlet property="sideMenuBttn" destination="Cee-Ya-cfB" id="aBH-aB-Uxj"/>
                 <outlet property="titleLabel" destination="nP5-kj-7c9" id="pAB-SQ-4Pi"/>
                 <outlet property="view" destination="ZYa-gD-kQ7" id="ZE9-qt-Abs"/>
             </connections>
@@ -48,19 +50,38 @@
                         <constraint firstAttribute="width" secondItem="33R-SA-hWy" secondAttribute="width" id="ook-9B-m9G"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cee-Ya-cfB">
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZC-lO-yD4">
                     <rect key="frame" x="30" y="20" width="24.5" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="CGl-Kx-FR5"/>
-                    </constraints>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="line.horizontal.3" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" scale="large" weight="semibold"/>
-                    </state>
-                    <connections>
-                        <action selector="showSideMenu:" destination="-1" eventType="touchUpInside" id="KDC-qM-HPi"/>
-                    </connections>
-                </button>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ8-OG-1DN">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="joz-GC-guq"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="arrow.left" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" scale="large" weight="semibold"/>
+                            </state>
+                            <connections>
+                                <action selector="popVC:" destination="-1" eventType="touchUpInside" id="TuF-BT-Rig"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cee-Ya-cfB">
+                            <rect key="frame" x="0.0" y="0.0" width="24.5" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="CGl-Kx-FR5"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="line.horizontal.3" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" scale="large" weight="semibold"/>
+                            </state>
+                            <connections>
+                                <action selector="showSideMenu:" destination="-1" eventType="touchUpInside" id="KDC-qM-HPi"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nP5-kj-7c9">
                     <rect key="frame" x="178.5" y="27" width="57.5" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -83,13 +104,13 @@
             <viewLayoutGuide key="safeArea" id="kbK-cb-XdW"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Cee-Ya-cfB" firstAttribute="centerY" secondItem="nP5-kj-7c9" secondAttribute="centerY" id="4fV-Ex-CUa"/>
                 <constraint firstItem="LuM-Mt-rMd" firstAttribute="bottom" secondItem="6n0-yD-I4e" secondAttribute="bottom" constant="-27" id="8xG-Ue-MX4"/>
                 <constraint firstItem="LuM-Mt-rMd" firstAttribute="trailing" secondItem="6n0-yD-I4e" secondAttribute="trailing" constant="-10" id="9eJ-9r-OGP"/>
-                <constraint firstItem="Cee-Ya-cfB" firstAttribute="leading" secondItem="kbK-cb-XdW" secondAttribute="leading" constant="30" id="FnM-PY-DGX"/>
+                <constraint firstItem="7ZC-lO-yD4" firstAttribute="leading" secondItem="kbK-cb-XdW" secondAttribute="leading" constant="30" id="Amz-ke-OS9"/>
                 <constraint firstItem="nP5-kj-7c9" firstAttribute="centerX" secondItem="ZYa-gD-kQ7" secondAttribute="centerX" id="JbJ-rR-9Am"/>
                 <constraint firstItem="nP5-kj-7c9" firstAttribute="centerY" secondItem="ZYa-gD-kQ7" secondAttribute="centerY" id="N7f-98-tbb"/>
                 <constraint firstAttribute="trailing" secondItem="6n0-yD-I4e" secondAttribute="trailing" constant="30" id="gen-iV-47B"/>
+                <constraint firstItem="7ZC-lO-yD4" firstAttribute="centerY" secondItem="nP5-kj-7c9" secondAttribute="centerY" id="ng6-if-6vj"/>
                 <constraint firstItem="6n0-yD-I4e" firstAttribute="centerY" secondItem="nP5-kj-7c9" secondAttribute="centerY" id="tFz-yf-ura"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -97,6 +118,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="what-is-the-white-shopping-bag-icon-1.jpg" width="256" height="256"/>
     </resources>

@@ -24,20 +24,22 @@ extension ReloadDelegate {
     
 //        let tabBarController = TabBar_Controller()
         let arrOfVC_ID:[String] = []
-            var arrOfVC:[UIViewController] = [HomeVC()]
+        var arrOfVC:[UIViewController] = [HomeVC()]
             
             for vcIdentifier in arrOfVC_ID{
                 let viewController = storyboard.instantiateViewController(withIdentifier: vcIdentifier)
                 arrOfVC.append(viewController)
             }
             tabBarController.viewControllers = arrOfVC
+        tabBarController.viewControllers?.append(WishListVC())
         tabBarController.viewControllers?.append(OrderDetailsVC())
+        
             //            // create the side controller
             //        let SideMenuVC = storyboard.instantiateViewController(withIdentifier: "SideMenuVC") as! SideMenuVC
-//        for (indx, VC) in tabBarController.viewControllers!.enumerated(){
-//
-//            VC.tabBarItem = UITabBarItem.init(title: "", image: VC.configureTabBarImage(with: indx,isSelectedState: true), selectedImage: VC.configureTabBarImage(with: indx))
-//        }
+        for (indx, VC) in tabBarController.viewControllers!.enumerated(){
+
+            VC.tabBarItem = UITabBarItem.init(title: "", image: VC.configureTabBarImage(with: indx), selectedImage: VC.configureTabBarImage(with: indx,isSelectedState: true))
+        }
        
 //        tabBarController.tabBar.backgroundColor = .red
        

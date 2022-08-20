@@ -25,4 +25,9 @@
             <point key="canvasLocation" x="-302" y="-240"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="f0D-hi-6Fm">
+            <size key="intrinsicContentSize" width="-1" height="83"/>
+        </designable>
+    </designables>
 </document>

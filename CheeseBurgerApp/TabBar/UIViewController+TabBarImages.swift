@@ -10,6 +10,22 @@ import UIKit
 
 extension UIViewController{
     
+    func pushViewController(id:String = "" , VC:UIViewController! = nil){
+      
+        if VC != nil{
+            self.navigationController?.pushViewController(VC , animated: true)
+        }else if id != ""{
+        let homeVC = self.storyboard!.instantiateViewController(withIdentifier :id)
+        //present(homeVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(homeVC , animated: true)}
+    }
+    
+    
+    @objc func popVCFromNav(){
+        
+    self.navigationController?.popViewController(animated: true)
+    }
+    
     func configureTabBarImage(with selectedIndx:Int, isSelectedState:Bool = false) -> UIImage{
               var imageName = ""
         var renderingMode:UIImage.RenderingMode = .alwaysOriginal
@@ -20,10 +36,10 @@ extension UIViewController{
                 imageName = isSelectedState ? "Selected Home" : "Home"
             case 1:
                 height = 30
-                imageName = isSelectedState ? "Selected Home" : "Home"
+                imageName = isSelectedState ? "selected heart" : "heart"
             case 2:
-                height = 50
-                imageName = "MOney-sign"
+                height = 30
+                imageName = isSelectedState ? "selected user" : "user"
             case 3:
                 height = 45
                 imageName = "doollar"

@@ -7,8 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120764409F525BA4346D8BD1 /* Pods_CheeseBurgerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D59E01057D606AD411C946 /* Pods_CheeseBurgerApp.framework */; };
 		ED05A4D128AC4A0100DB4638 /* UIViewController+TabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED05A4D028AC4A0100DB4638 /* UIViewController+TabBarImages.swift */; };
 		ED05A4D328AC4A5900DB4638 /* UIView+AdditionalFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED05A4D228AC4A5900DB4638 /* UIView+AdditionalFeatures.swift */; };
+		ED080DEB28AD3E41000EFB10 /* OrderDetailsVC+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED080DEA28AD3E40000EFB10 /* OrderDetailsVC+Collection.swift */; };
+		ED080DED28AD3E51000EFB10 /* OrderDetailsVC+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED080DEC28AD3E51000EFB10 /* OrderDetailsVC+Delegation.swift */; };
+		ED080DF028AD3F01000EFB10 /* CarouselBurgerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED080DEE28AD3F01000EFB10 /* CarouselBurgerCell.swift */; };
+		ED080DF128AD3F01000EFB10 /* CarouselBurgerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED080DEF28AD3F01000EFB10 /* CarouselBurgerCell.xib */; };
+		ED080DF528ADB5F5000EFB10 /* WishListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED080DF328ADB5F5000EFB10 /* WishListVC.swift */; };
+		ED080DF628ADB5F5000EFB10 /* WishListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED080DF428ADB5F5000EFB10 /* WishListVC.xib */; };
+		ED080DF928ADB731000EFB10 /* WishListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED080DF728ADB731000EFB10 /* WishListCell.swift */; };
+		ED080DFA28ADB731000EFB10 /* WishListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED080DF828ADB731000EFB10 /* WishListCell.xib */; };
+		ED0A56B528B041EC00B7AA51 /* WishListVC+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56B428B041EC00B7AA51 /* WishListVC+Collection.swift */; };
+		ED0A56B728B0421F00B7AA51 /* WishListVC+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56B628B0421F00B7AA51 /* WishListVC+Delegation.swift */; };
+		ED0A56BB28B080CD00B7AA51 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56B928B080CD00B7AA51 /* CartVC.swift */; };
+		ED0A56BC28B080CD00B7AA51 /* CartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0A56BA28B080CD00B7AA51 /* CartVC.xib */; };
+		ED0A56CB28B0856E00B7AA51 /* UIViewXRadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C028B0856E00B7AA51 /* UIViewXRadialGradient.swift */; };
+		ED0A56CC28B0856E00B7AA51 /* UITextFieldX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C128B0856E00B7AA51 /* UITextFieldX.swift */; };
+		ED0A56CD28B0856E00B7AA51 /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C228B0856E00B7AA51 /* UIButtonX.swift */; };
+		ED0A56CE28B0856E00B7AA51 /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C328B0856E00B7AA51 /* UILabelX.swift */; };
+		ED0A56CF28B0856E00B7AA51 /* UIViewAnchorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C428B0856E00B7AA51 /* UIViewAnchorPoint.swift */; };
+		ED0A56D028B0856E00B7AA51 /* UIViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C528B0856E00B7AA51 /* UIViewControllerX.swift */; };
+		ED0A56D128B0856E00B7AA51 /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C628B0856E00B7AA51 /* UIImageViewX.swift */; };
+		ED0A56D428B0856E00B7AA51 /* UIVisualEffectViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56C928B0856E00B7AA51 /* UIVisualEffectViewX.swift */; };
+		ED0A56D528B0856E00B7AA51 /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56CA28B0856E00B7AA51 /* UISliderX.swift */; };
+		ED0A56D728B08F1800B7AA51 /* CartVC+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56D628B08F1800B7AA51 /* CartVC+Collection.swift */; };
+		ED0A56D928B08F3C00B7AA51 /* CartVC+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A56D828B08F3C00B7AA51 /* CartVC+Delegation.swift */; };
 		ED1784F728AAD3D8006E6306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1784F628AAD3D8006E6306 /* AppDelegate.swift */; };
 		ED1784F928AAD3D8006E6306 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1784F828AAD3D8006E6306 /* SceneDelegate.swift */; };
 		ED1784FE28AAD3D8006E6306 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED1784FC28AAD3D8006E6306 /* Main.storyboard */; };
@@ -24,6 +48,7 @@
 		ED17853128AAD493006E6306 /* MealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17852F28AAD493006E6306 /* MealCell.xib */; };
 		ED17853428AB0B50006E6306 /* BurgerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17853228AB0B50006E6306 /* BurgerCell.swift */; };
 		ED17853528AB0B50006E6306 /* BurgerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED17853328AB0B50006E6306 /* BurgerCell.xib */; };
+		ED8C3D4528AF132E00417706 /* ImageView_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C3D4428AF132E00417706 /* ImageView_Ext.swift */; };
 		ED9D348E28ABB1AC00A95A6E /* HomeVC+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D348D28ABB1AC00A95A6E /* HomeVC+Collection.swift */; };
 		ED9D349028ABB1BF00A95A6E /* HomeVC+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D348F28ABB1BF00A95A6E /* HomeVC+Delegation.swift */; };
 		ED9D349228ABB6B500A95A6E /* Reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D349128ABB6B500A95A6E /* Reload.swift */; };
@@ -39,8 +64,12 @@
 		ED9D34B528ABF4E500A95A6E /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D34B328ABF4E500A95A6E /* OptionCell.swift */; };
 		ED9D34B628ABF4E500A95A6E /* OptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9D34B428ABF4E500A95A6E /* OptionCell.xib */; };
 		EDABC84B28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABC84A28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift */; };
+		EDABE41A28AE5F4C00CB3EF5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABE41928AE5F4C00CB3EF5 /* Meal.swift */; };
 		EDE1887628AD1795004D0316 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1887428AD1795004D0316 /* OrderDetailsVC.swift */; };
 		EDE1887728AD1795004D0316 /* OrderDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE1887528AD1795004D0316 /* OrderDetailsVC.xib */; };
+		EDE1887928AD1E5F004D0316 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EDE1887828AD1E5F004D0316 /* Podfile */; };
+		EDFF539A28B129290023033B /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF539928B129290023033B /* Observer.swift */; };
+		EDFF539C28B12A130023033B /* HomeList_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF539B28B12A130023033B /* HomeList_VM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +90,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09FCBEA80B9D3F095C47F222 /* Pods-CheeseBurgerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheeseBurgerApp.debug.xcconfig"; path = "Target Support Files/Pods-CheeseBurgerApp/Pods-CheeseBurgerApp.debug.xcconfig"; sourceTree = "<group>"; };
+		94B0C33D98D14368B1A9085A /* Pods-CheeseBurgerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheeseBurgerApp.release.xcconfig"; path = "Target Support Files/Pods-CheeseBurgerApp/Pods-CheeseBurgerApp.release.xcconfig"; sourceTree = "<group>"; };
+		C4D59E01057D606AD411C946 /* Pods_CheeseBurgerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CheeseBurgerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED05A4D028AC4A0100DB4638 /* UIViewController+TabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TabBarImages.swift"; sourceTree = "<group>"; };
 		ED05A4D228AC4A5900DB4638 /* UIView+AdditionalFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AdditionalFeatures.swift"; sourceTree = "<group>"; };
+		ED080DEA28AD3E40000EFB10 /* OrderDetailsVC+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderDetailsVC+Collection.swift"; sourceTree = "<group>"; };
+		ED080DEC28AD3E51000EFB10 /* OrderDetailsVC+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderDetailsVC+Delegation.swift"; sourceTree = "<group>"; };
+		ED080DEE28AD3F01000EFB10 /* CarouselBurgerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselBurgerCell.swift; sourceTree = "<group>"; };
+		ED080DEF28AD3F01000EFB10 /* CarouselBurgerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselBurgerCell.xib; sourceTree = "<group>"; };
+		ED080DF328ADB5F5000EFB10 /* WishListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListVC.swift; sourceTree = "<group>"; };
+		ED080DF428ADB5F5000EFB10 /* WishListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListVC.xib; sourceTree = "<group>"; };
+		ED080DF728ADB731000EFB10 /* WishListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCell.swift; sourceTree = "<group>"; };
+		ED080DF828ADB731000EFB10 /* WishListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListCell.xib; sourceTree = "<group>"; };
+		ED0A56B428B041EC00B7AA51 /* WishListVC+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishListVC+Collection.swift"; sourceTree = "<group>"; };
+		ED0A56B628B0421F00B7AA51 /* WishListVC+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishListVC+Delegation.swift"; sourceTree = "<group>"; };
+		ED0A56B928B080CD00B7AA51 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		ED0A56BA28B080CD00B7AA51 /* CartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartVC.xib; sourceTree = "<group>"; };
+		ED0A56BE28B0856E00B7AA51 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		ED0A56C028B0856E00B7AA51 /* UIViewXRadialGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewXRadialGradient.swift; sourceTree = "<group>"; };
+		ED0A56C128B0856E00B7AA51 /* UITextFieldX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldX.swift; sourceTree = "<group>"; };
+		ED0A56C228B0856E00B7AA51 /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
+		ED0A56C328B0856E00B7AA51 /* UILabelX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelX.swift; sourceTree = "<group>"; };
+		ED0A56C428B0856E00B7AA51 /* UIViewAnchorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewAnchorPoint.swift; sourceTree = "<group>"; };
+		ED0A56C528B0856E00B7AA51 /* UIViewControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerX.swift; sourceTree = "<group>"; };
+		ED0A56C628B0856E00B7AA51 /* UIImageViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewX.swift; sourceTree = "<group>"; };
+		ED0A56C928B0856E00B7AA51 /* UIVisualEffectViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVisualEffectViewX.swift; sourceTree = "<group>"; };
+		ED0A56CA28B0856E00B7AA51 /* UISliderX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISliderX.swift; sourceTree = "<group>"; };
+		ED0A56D628B08F1800B7AA51 /* CartVC+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartVC+Collection.swift"; sourceTree = "<group>"; };
+		ED0A56D828B08F3C00B7AA51 /* CartVC+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartVC+Delegation.swift"; sourceTree = "<group>"; };
 		ED1784F328AAD3D8006E6306 /* CheeseBurgerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheeseBurgerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED1784F628AAD3D8006E6306 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED1784F828AAD3D8006E6306 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +138,7 @@
 		ED17852F28AAD493006E6306 /* MealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCell.xib; sourceTree = "<group>"; };
 		ED17853228AB0B50006E6306 /* BurgerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerCell.swift; sourceTree = "<group>"; };
 		ED17853328AB0B50006E6306 /* BurgerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BurgerCell.xib; sourceTree = "<group>"; };
+		ED8C3D4428AF132E00417706 /* ImageView_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView_Ext.swift; sourceTree = "<group>"; };
 		ED9D348D28ABB1AC00A95A6E /* HomeVC+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+Collection.swift"; sourceTree = "<group>"; };
 		ED9D348F28ABB1BF00A95A6E /* HomeVC+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+Delegation.swift"; sourceTree = "<group>"; };
 		ED9D349128ABB6B500A95A6E /* Reload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reload.swift; sourceTree = "<group>"; };
@@ -97,8 +154,12 @@
 		ED9D34B328ABF4E500A95A6E /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		ED9D34B428ABF4E500A95A6E /* OptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionCell.xib; sourceTree = "<group>"; };
 		EDABC84A28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
+		EDABE41928AE5F4C00CB3EF5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		EDE1887428AD1795004D0316 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		EDE1887528AD1795004D0316 /* OrderDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailsVC.xib; sourceTree = "<group>"; };
+		EDE1887828AD1E5F004D0316 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EDFF539928B129290023033B /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		EDFF539B28B12A130023033B /* HomeList_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList_VM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120764409F525BA4346D8BD1 /* Pods_CheeseBurgerApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,13 +188,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06DF5136169C13877E93486A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				09FCBEA80B9D3F095C47F222 /* Pods-CheeseBurgerApp.debug.xcconfig */,
+				94B0C33D98D14368B1A9085A /* Pods-CheeseBurgerApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7530200C9672B085706AE334 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4D59E01057D606AD411C946 /* Pods_CheeseBurgerApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED080DF228ADB5C5000EFB10 /* WishListVC */ = {
+			isa = PBXGroup;
+			children = (
+				ED080DF328ADB5F5000EFB10 /* WishListVC.swift */,
+				ED080DF428ADB5F5000EFB10 /* WishListVC.xib */,
+				ED080DF728ADB731000EFB10 /* WishListCell.swift */,
+				ED080DF828ADB731000EFB10 /* WishListCell.xib */,
+				ED0A56B428B041EC00B7AA51 /* WishListVC+Collection.swift */,
+				ED0A56B628B0421F00B7AA51 /* WishListVC+Delegation.swift */,
+			);
+			path = WishListVC;
+			sourceTree = "<group>";
+		};
+		ED0A56B828B0809700B7AA51 /* CartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				ED0A56B928B080CD00B7AA51 /* CartVC.swift */,
+				ED0A56BA28B080CD00B7AA51 /* CartVC.xib */,
+				ED0A56D628B08F1800B7AA51 /* CartVC+Collection.swift */,
+				ED0A56D828B08F3C00B7AA51 /* CartVC+Delegation.swift */,
+			);
+			path = CartScreen;
+			sourceTree = "<group>";
+		};
+		ED0A56BD28B0856E00B7AA51 /* SF */ = {
+			isa = PBXGroup;
+			children = (
+				ED0A56BE28B0856E00B7AA51 /* Header.h */,
+				ED0A56BF28B0856E00B7AA51 /* DesignableX */,
+			);
+			path = SF;
+			sourceTree = "<group>";
+		};
+		ED0A56BF28B0856E00B7AA51 /* DesignableX */ = {
+			isa = PBXGroup;
+			children = (
+				ED0A56C028B0856E00B7AA51 /* UIViewXRadialGradient.swift */,
+				ED0A56C128B0856E00B7AA51 /* UITextFieldX.swift */,
+				ED0A56C228B0856E00B7AA51 /* UIButtonX.swift */,
+				ED0A56C328B0856E00B7AA51 /* UILabelX.swift */,
+				ED0A56C428B0856E00B7AA51 /* UIViewAnchorPoint.swift */,
+				ED0A56C528B0856E00B7AA51 /* UIViewControllerX.swift */,
+				ED0A56C628B0856E00B7AA51 /* UIImageViewX.swift */,
+				ED0A56C928B0856E00B7AA51 /* UIVisualEffectViewX.swift */,
+				ED0A56CA28B0856E00B7AA51 /* UISliderX.swift */,
+			);
+			path = DesignableX;
+			sourceTree = "<group>";
+		};
 		ED1784EA28AAD3D8006E6306 = {
 			isa = PBXGroup;
 			children = (
+				EDE1887828AD1E5F004D0316 /* Podfile */,
 				ED1784F528AAD3D8006E6306 /* CheeseBurgerApp */,
 				ED17850F28AAD3DF006E6306 /* CheeseBurgerAppTests */,
 				ED17851928AAD3DF006E6306 /* CheeseBurgerAppUITests */,
 				ED1784F428AAD3D8006E6306 /* Products */,
+				06DF5136169C13877E93486A /* Pods */,
+				7530200C9672B085706AE334 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,8 +280,10 @@
 		ED1784F528AAD3D8006E6306 /* CheeseBurgerApp */ = {
 			isa = PBXGroup;
 			children = (
+				EDFF539828B128FF0023033B /* DataBinding */,
 				ED9D349E28ABBA2600A95A6E /* AppDelegate */,
 				ED9D349328ABB74B00A95A6E /* TabBar */,
+				ED0A56BD28B0856E00B7AA51 /* SF */,
 				ED17852928AAD3F7006E6306 /* Scences */,
 				ED1784FC28AAD3D8006E6306 /* Main.storyboard */,
 				ED17850228AAD3DE006E6306 /* Assets.xcassets */,
@@ -181,8 +314,10 @@
 		ED17852928AAD3F7006E6306 /* Scences */ = {
 			isa = PBXGroup;
 			children = (
+				ED0A56B828B0809700B7AA51 /* CartScreen */,
+				ED080DF228ADB5C5000EFB10 /* WishListVC */,
 				EDE1887328AD1778004D0316 /* OrderDetailsVC */,
-				ED9D34B028ABEC0500A95A6E /* HomeVC */,
+				ED9D34B028ABEC0500A95A6E /* HomeScreen */,
 				ED9D34A728ABEBFD00A95A6E /* NavBar_View */,
 			);
 			path = Scences;
@@ -198,6 +333,7 @@
 				ED9D34A228ABBD6300A95A6E /* TabBar_Controller.xib */,
 				ED05A4D028AC4A0100DB4638 /* UIViewController+TabBarImages.swift */,
 				ED05A4D228AC4A5900DB4638 /* UIView+AdditionalFeatures.swift */,
+				ED8C3D4428AF132E00417706 /* ImageView_Ext.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -223,18 +359,14 @@
 			path = NavBar_View;
 			sourceTree = "<group>";
 		};
-		ED9D34B028ABEC0500A95A6E /* HomeVC */ = {
+		ED9D34B028ABEC0500A95A6E /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				ED9D34B228ABF47600A95A6E /* OptionCell */,
-				ED9D34B128ABF46500A95A6E /* BurgerCell */,
-				ED17852A28AAD440006E6306 /* HomeVC.swift */,
-				ED17852B28AAD440006E6306 /* HomeVC.xib */,
-				ED9D348D28ABB1AC00A95A6E /* HomeVC+Collection.swift */,
-				ED9D348F28ABB1BF00A95A6E /* HomeVC+Delegation.swift */,
-				EDABC84A28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift */,
+				EDABE41828AE5F2E00CB3EF5 /* Home_M */,
+				EDABE41728AE5EF500CB3EF5 /* HomeView */,
+				EDABE41628AE5E9400CB3EF5 /* Home_VM */,
 			);
-			path = HomeVC;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		ED9D34B128ABF46500A95A6E /* BurgerCell */ = {
@@ -257,13 +389,55 @@
 			path = OptionCell;
 			sourceTree = "<group>";
 		};
+		EDABE41628AE5E9400CB3EF5 /* Home_VM */ = {
+			isa = PBXGroup;
+			children = (
+				EDFF539B28B12A130023033B /* HomeList_VM.swift */,
+			);
+			path = Home_VM;
+			sourceTree = "<group>";
+		};
+		EDABE41728AE5EF500CB3EF5 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D34B228ABF47600A95A6E /* OptionCell */,
+				ED9D34B128ABF46500A95A6E /* BurgerCell */,
+				ED17852A28AAD440006E6306 /* HomeVC.swift */,
+				ED17852B28AAD440006E6306 /* HomeVC.xib */,
+				ED9D348D28ABB1AC00A95A6E /* HomeVC+Collection.swift */,
+				ED9D348F28ABB1BF00A95A6E /* HomeVC+Delegation.swift */,
+				EDABC84A28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		EDABE41828AE5F2E00CB3EF5 /* Home_M */ = {
+			isa = PBXGroup;
+			children = (
+				EDABE41928AE5F4C00CB3EF5 /* Meal.swift */,
+			);
+			path = Home_M;
+			sourceTree = "<group>";
+		};
 		EDE1887328AD1778004D0316 /* OrderDetailsVC */ = {
 			isa = PBXGroup;
 			children = (
 				EDE1887428AD1795004D0316 /* OrderDetailsVC.swift */,
 				EDE1887528AD1795004D0316 /* OrderDetailsVC.xib */,
+				ED080DEA28AD3E40000EFB10 /* OrderDetailsVC+Collection.swift */,
+				ED080DEC28AD3E51000EFB10 /* OrderDetailsVC+Delegation.swift */,
+				ED080DEE28AD3F01000EFB10 /* CarouselBurgerCell.swift */,
+				ED080DEF28AD3F01000EFB10 /* CarouselBurgerCell.xib */,
 			);
 			path = OrderDetailsVC;
+			sourceTree = "<group>";
+		};
+		EDFF539828B128FF0023033B /* DataBinding */ = {
+			isa = PBXGroup;
+			children = (
+				EDFF539928B129290023033B /* Observer.swift */,
+			);
+			path = DataBinding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +447,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED17852028AAD3DF006E6306 /* Build configuration list for PBXNativeTarget "CheeseBurgerApp" */;
 			buildPhases = (
+				8E72F7CD6121A38E7EF5CBBB /* [CP] Check Pods Manifest.lock */,
 				ED1784EF28AAD3D8006E6306 /* Sources */,
 				ED1784F028AAD3D8006E6306 /* Frameworks */,
 				ED1784F128AAD3D8006E6306 /* Resources */,
+				8C1AAD577A443C9589F64F74 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,12 +550,17 @@
 				ED17850628AAD3DE006E6306 /* LaunchScreen.storyboard in Resources */,
 				ED17852D28AAD440006E6306 /* HomeVC.xib in Resources */,
 				ED17853528AB0B50006E6306 /* BurgerCell.xib in Resources */,
+				ED080DF628ADB5F5000EFB10 /* WishListVC.xib in Resources */,
 				ED17853128AAD493006E6306 /* MealCell.xib in Resources */,
+				ED080DFA28ADB731000EFB10 /* WishListCell.xib in Resources */,
+				ED0A56BC28B080CD00B7AA51 /* CartVC.xib in Resources */,
 				ED17850328AAD3DE006E6306 /* Assets.xcassets in Resources */,
 				ED9D34AF28ABEBFD00A95A6E /* NavBarView.xib in Resources */,
 				ED9D34A428ABBD6300A95A6E /* TabBar_Controller.xib in Resources */,
+				ED080DF128AD3F01000EFB10 /* CarouselBurgerCell.xib in Resources */,
 				ED1784FE28AAD3D8006E6306 /* Main.storyboard in Resources */,
 				ED9D34B628ABF4E500A95A6E /* OptionCell.xib in Resources */,
+				EDE1887928AD1E5F004D0316 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,32 +580,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C1AAD577A443C9589F64F74 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheeseBurgerApp/Pods-CheeseBurgerApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheeseBurgerApp/Pods-CheeseBurgerApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheeseBurgerApp/Pods-CheeseBurgerApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E72F7CD6121A38E7EF5CBBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CheeseBurgerApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED1784EF28AAD3D8006E6306 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0A56CD28B0856E00B7AA51 /* UIButtonX.swift in Sources */,
 				ED05A4D328AC4A5900DB4638 /* UIView+AdditionalFeatures.swift in Sources */,
+				EDFF539A28B129290023033B /* Observer.swift in Sources */,
 				ED9D349228ABB6B500A95A6E /* Reload.swift in Sources */,
+				ED0A56CB28B0856E00B7AA51 /* UIViewXRadialGradient.swift in Sources */,
+				ED0A56D028B0856E00B7AA51 /* UIViewControllerX.swift in Sources */,
 				ED9D34A028ABBB0100A95A6E /* UIWindow_S.swift in Sources */,
+				EDFF539C28B12A130023033B /* HomeList_VM.swift in Sources */,
 				EDABC84B28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift in Sources */,
+				ED8C3D4528AF132E00417706 /* ImageView_Ext.swift in Sources */,
+				ED0A56D428B0856E00B7AA51 /* UIVisualEffectViewX.swift in Sources */,
+				EDABE41A28AE5F4C00CB3EF5 /* Meal.swift in Sources */,
+				ED0A56D728B08F1800B7AA51 /* CartVC+Collection.swift in Sources */,
 				ED17853028AAD493006E6306 /* MealCell.swift in Sources */,
 				ED9D34A328ABBD6300A95A6E /* TabBar_Controller.swift in Sources */,
 				ED9D34AE28ABEBFD00A95A6E /* NavBarView.swift in Sources */,
 				ED17853428AB0B50006E6306 /* BurgerCell.swift in Sources */,
+				ED0A56D128B0856E00B7AA51 /* UIImageViewX.swift in Sources */,
+				ED0A56CF28B0856E00B7AA51 /* UIViewAnchorPoint.swift in Sources */,
+				ED080DF028AD3F01000EFB10 /* CarouselBurgerCell.swift in Sources */,
 				ED05A4D128AC4A0100DB4638 /* UIViewController+TabBarImages.swift in Sources */,
+				ED080DF528ADB5F5000EFB10 /* WishListVC.swift in Sources */,
+				ED0A56B728B0421F00B7AA51 /* WishListVC+Delegation.swift in Sources */,
 				ED9D349028ABB1BF00A95A6E /* HomeVC+Delegation.swift in Sources */,
+				ED0A56CE28B0856E00B7AA51 /* UILabelX.swift in Sources */,
 				ED9D34B528ABF4E500A95A6E /* OptionCell.swift in Sources */,
+				ED0A56B528B041EC00B7AA51 /* WishListVC+Collection.swift in Sources */,
 				ED9D348E28ABB1AC00A95A6E /* HomeVC+Collection.swift in Sources */,
+				ED080DEB28AD3E41000EFB10 /* OrderDetailsVC+Collection.swift in Sources */,
 				EDE1887628AD1795004D0316 /* OrderDetailsVC.swift in Sources */,
+				ED080DF928ADB731000EFB10 /* WishListCell.swift in Sources */,
 				ED17852C28AAD440006E6306 /* HomeVC.swift in Sources */,
 				ED9D34A628ABDF4500A95A6E /* UIViewX.swift in Sources */,
+				ED080DED28AD3E51000EFB10 /* OrderDetailsVC+Delegation.swift in Sources */,
+				ED0A56D528B0856E00B7AA51 /* UISliderX.swift in Sources */,
 				ED17850128AAD3D8006E6306 /* CheeseBurgerApp.xcdatamodeld in Sources */,
+				ED0A56D928B08F3C00B7AA51 /* CartVC+Delegation.swift in Sources */,
 				ED9D349D28ABBA1800A95A6E /* AppDelegate_S.swift in Sources */,
 				ED9D349A28ABB74B00A95A6E /* CustomTabbar.swift in Sources */,
 				ED1784F728AAD3D8006E6306 /* AppDelegate.swift in Sources */,
 				ED1784F928AAD3D8006E6306 /* SceneDelegate.swift in Sources */,
+				ED0A56CC28B0856E00B7AA51 /* UITextFieldX.swift in Sources */,
 				ED9D349B28ABB74B00A95A6E /* TabbarController.swift in Sources */,
+				ED0A56BB28B080CD00B7AA51 /* CartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +842,7 @@
 		};
 		ED17852128AAD3DF006E6306 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09FCBEA80B9D3F095C47F222 /* Pods-CheeseBurgerApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -623,6 +870,7 @@
 		};
 		ED17852228AAD3DF006E6306 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94B0C33D98D14368B1A9085A /* Pods-CheeseBurgerApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

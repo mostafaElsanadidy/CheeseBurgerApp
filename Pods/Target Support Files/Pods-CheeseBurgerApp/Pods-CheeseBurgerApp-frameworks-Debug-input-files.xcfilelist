@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-CheeseBurgerApp/Pods-CheeseBurgerApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/LGSegmentedControl/LGSegmentedControl.framework
+${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework
+${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework
+${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework

@@ -19,11 +19,13 @@ class NavBarView: UIView {
     }
     */
 
-       @IBOutlet var view:UIView!
+       @IBOutlet weak var view:UIView!
        @IBOutlet weak var notiLabelView: UIView!
        @IBOutlet weak var notiLabel: UILabel!
+    @IBOutlet weak var sideMenuBttn: UIButton!
+    @IBOutlet weak var popVCBttn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    var popVC : (() -> ())!
     
    override func awakeFromNib() {
     
@@ -60,15 +62,18 @@ class NavBarView: UIView {
         
         notiLabelView
             .layer.cornerRadius = 11
-        
         view.frame = bounds
         view.frame.size.width = UIScreen.main.bounds.width
-
+        
         self.addSubview(self.view)
     }
     
+    @IBAction func popVC(_ sender: UIButton) {
+        popVC()
+    }
     
     @IBAction func showOrdersCarPage(_ sender: UIButton) {
+        
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "showCarItems"), object: nil)
     }
@@ -78,7 +83,8 @@ class NavBarView: UIView {
     //        if let enuBttn = sender as? SSMenuButton {
     //            enuBttn.sideMenuButtonTapped()
     //        }
-           NotificationCenter.default.post(name: Notification.Name(rawValue: "OpenOrCloseSideMenu"), object: nil)
+        
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "OpenOrCloseSideMenu"), object: nil)
            //   SSSideMenuControls.openOrCloseSideMenu()
         }
     

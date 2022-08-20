@@ -10,13 +10,6 @@ import UIKit
 class TabbarController: UITabBarController,UITabBarControllerDelegate {
     
     //Outlets
-    
-    var isVisitor:Bool = false
-    var isForceToLogout:Bool = false
-    var addAnotherUDID:Bool = false
-    var progressBarValue:Float = 0
-    
-    var didStyleTabBar = false
    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
