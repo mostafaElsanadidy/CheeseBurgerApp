@@ -14,16 +14,8 @@ extension HomeVC:UISearchBarDelegate{
     
     func filterForSearchTextAndScopeButton(searchText:String,scopeButtonIndex:Int = 0) {
         
-        if searchBar.text != ""{
-//            let scopeButtonIndex = searchBar.selectedScopeButtonIndex
-            print(searchBarFilters[scopeButtonIndex])
-            filteredMeals = arrOfMeals.reduce([],+)
-                .filter{($0.mealDesc.caseInsensitiveCompare(searchBarFilters[scopeButtonIndex]) == .orderedSame) && ($0.name.localizedCaseInsensitiveContains(searchText))}
-        }else{
-
-            filteredMeals = arrOfMeals.reduce([],+).filter{($0.mealDesc.caseInsensitiveCompare(searchBarFilters[scopeButtonIndex]) == .orderedSame)}
-        }
         
+        homeViewModel.searchbttnDidTapped(searchBarText: searchText,scopeButtonIndex: scopeButtonIndex)
         homeCollection.reloadData()
         homeCollection.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
@@ -41,7 +33,7 @@ extension HomeVC:UISearchBarDelegate{
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
-        searchBar.showsScopeBar = true
+//        searchBar.showsScopeBar = true
 //        setupDropDown(with: 0)
     }
     

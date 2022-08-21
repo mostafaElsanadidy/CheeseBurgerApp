@@ -66,8 +66,7 @@ extension CartVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,Swi
             
 //            self.homeCollection.reloadData()
             action.fulfill(with: .delete)
-            self.shoppingCartMeals[indexPath.row].orderAmount = 0
-            self.upadateshoppingCartMeal(self.shoppingCartMeals.remove(at: indexPath.row))
+            self.shoppingCartViewModel.shoppingCartCellWillDelete(in: indexPath.row)
 //            self.filteredMeals.remove(at: indexPath.row)
 //            fulfill(with: .delete)
         }

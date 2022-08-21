@@ -11,8 +11,10 @@ class WishListVC: UIViewController {
 
     @IBOutlet weak var countOfCartItemsLabel: UILabel!
     @IBOutlet weak var wishListCollection: UICollectionView!
-    var wishListMeals:[Meal] = []
-    var upadateWishListMeal : ((_ meal:Meal,_ isDeletedState:Bool) -> ())!
+    @IBOutlet weak var countOfCartItemsView: UIViewX!
+    var wishListViewModel = WishListViewModel()
+//    var wishListMeals:[Meal] = []
+//    var upadateWishListMeal : ((_ meal:Meal,_ isDeletedState:Bool) -> ())!
     
     
     override func viewDidLoad() {
@@ -28,6 +30,14 @@ class WishListVC: UIViewController {
         setup_Collection()
     }
 
+    func setupBinder(){
+    wishListViewModel.wishListMeals.bind{
+        [weak self] shoppingCartMeals in
+        guard let strongSelf = self else{return}
+        DispatchQueue.main.async{
+            strongSelf.wishListCollection.reloadData()
+        }
+    }}
     // MARK: - Setup Collection
     private func setup_Collection() {
         
@@ -47,7 +57,11 @@ class WishListVC: UIViewController {
 
     @objc func updateCountOfCartItemsByNotification(_ notification:Notification){
         
-        countOfCartItemsLabel.text = notification.userInfo!["countOfItems"] as? String
+        let dictionaryValue = notification.userInfo!["countOfItems"] as? String
+        countOfCartItemsLabel.text = dictionaryValue ?? ""
+        if let value = Int(dictionaryValue ?? "") {
+            self.countOfCartItemsView.isHidden = value == 0
+        }
     }
     
     @IBAction func didCardBttnTapped(_ sender: UIButton) {

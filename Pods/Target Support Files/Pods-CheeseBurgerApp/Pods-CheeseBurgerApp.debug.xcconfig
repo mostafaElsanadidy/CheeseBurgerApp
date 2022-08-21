@@ -1,11 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/LGSegmentedControl" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio" "${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit" "${PODS_CONFIGURATION_BUILD_DIR}/UPCarouselFlowLayout"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/LGSegmentedControl" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio" "${PODS_CONFIGURATION_BUILD_DIR}/SideMenuController" "${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit" "${PODS_CONFIGURATION_BUILD_DIR}/UPCarouselFlowLayout"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/LGSegmentedControl/LGSegmentedControl.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio/Segmentio.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit/SwipeCellKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/LGSegmentedControl/LGSegmentedControl.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio/Segmentio.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SideMenuController/SideMenuController.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit/SwipeCellKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
 LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
-OTHER_LDFLAGS = $(inherited) -framework "LGSegmentedControl" -framework "Segmentio" -framework "SwipeCellKit" -framework "UIKit" -framework "UPCarouselFlowLayout"
+OTHER_LDFLAGS = $(inherited) -framework "LGSegmentedControl" -framework "Segmentio" -framework "SideMenuController" -framework "SwipeCellKit" -framework "UIKit" -framework "UPCarouselFlowLayout"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

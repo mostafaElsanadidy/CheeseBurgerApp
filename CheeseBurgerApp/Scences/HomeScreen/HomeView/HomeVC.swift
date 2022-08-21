@@ -19,34 +19,99 @@ class HomeVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var countOfCartItemsLabel: UILabel!
+    @IBOutlet weak var countOfCartItemsView: UIViewX!
     
-    var searchBarFilters = ["Burger"
-                            ,"Pizza"
-                            ,"Pasta"
-                            ,"Salad"]
+     var homeViewModel = HomeList_VM()
+    
+    
+    
+    
     var scrollDirection = 0
     var lastContentOffset:CGFloat = 0
    
     var lastItem_willDisplay = 0
     var items_willDisplay:[Int] = []
     
-    var arrOfMeals:[[Meal]] = []{
-        didSet{
-            guard let scopeButtonIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
-            filteredMeals = arrOfMeals[scopeButtonIndex]
-            let wishListMeals = arrOfMeals.reduce([],+).filter{$0.isLikedYou}
-            guard wishListMeals.count > 0 else {return}
-            if let wishListVCIndex = tabBarController?.viewControllers?.firstIndex{$0 is WishListVC},let vc = tabBarController?.viewControllers?[wishListVCIndex] as? WishListVC{
-                vc.wishListMeals = wishListMeals
+//    var arrOfMeals:[[Meal]] = []{
+//        didSet{
+//            guard let scopeButtonIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
+//            filteredMeals = arrOfMeals[scopeButtonIndex]
+//            let wishListMeals = arrOfMeals.reduce([],+).filter{$0.isLikedYou}
+//            guard wishListMeals.count > 0 else {return}
+//            if let wishListVCIndex = tabBarController?.viewControllers?.firstIndex{$0 is WishListVC},let vc = tabBarController?.viewControllers?[wishListVCIndex] as? WishListVC{
+//                vc.wishListMeals = wishListMeals
+//                }
+//        }
+//    }
+    
+//    var filteredMeals:[Meal] = []{
+//        didSet{
+////            homeCollection.reloadData()
+//        }
+//    }
+    func setupBinder(){
+        homeViewModel.arrayOfMeals.bind{
+            [weak self] arrayOfMeals in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                guard let scopeButtonIndex = strongSelf.optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
+                strongSelf.homeViewModel.getFilteredMeals(scopeIndex: scopeButtonIndex)
+                strongSelf.homeViewModel.getWishListMeals()
+            }
+        }
+        homeViewModel.searchBarFilters.bind{[weak self] searchBarFilters in
+            guard let strongSelf = self else{return}
+            strongSelf.initSearchBar(searchBarFilters: searchBarFilters)
+        }
+        homeViewModel.upadateWishListMeal.bind{
+            [weak self] upadateWishListMeal in
+                guard let strongSelf = self else{return}
+            if let wishListVCIndex = strongSelf.tabBarController?.viewControllers?.firstIndex(where: {$0 is WishListVC}),let vc = strongSelf.tabBarController?.viewControllers?[wishListVCIndex] as? WishListVC{
+                vc.wishListViewModel.upadateWishListMeal = upadateWishListMeal
                 }
         }
+        homeViewModel.wishListMeals.bind{
+            [weak self] wishListMeals in
+                guard let strongSelf = self else{return}
+            guard wishListMeals.count > 0 else {return}
+            if let wishListVCIndex = strongSelf.tabBarController?.viewControllers?.firstIndex(where: {$0 is WishListVC}),let vc = strongSelf.tabBarController?.viewControllers?[wishListVCIndex] as? WishListVC{
+                vc.wishListViewModel.wishListMeals.value = wishListMeals
+                }
+        }
+        homeViewModel.upadateshoppingCartMealTuple.bind{
+            [weak self] tuple in
+                guard let strongSelf = self else{return}
+            let cartVC = CartVC()
+            cartVC.shoppingCartViewModel.shoppingCartMeals.value = tuple.meals
+            cartVC.shoppingCartViewModel.updateShoppingCartMeal = tuple.didTapped
+            strongSelf.pushViewController(VC: cartVC)
+        }
+        homeViewModel.countOfItems.bind{
+            [weak self] countOfItems in
+            guard let strongSelf = self else{return}
+            strongSelf.countOfCartItemsLabel.text = "\(countOfItems)"
+           
+            if let value = Int(countOfItems) {
+                strongSelf.countOfCartItemsView.isHidden = value == 0
+            }
+            
+            let dicOfItemsCount = ["countOfItems" : countOfItems]
+            NotificationCenter.default.post(name: Notification.Name(rawValue:"updateCountOfCartItems"), object: nil, userInfo: dicOfItemsCount)
+        }
+        homeViewModel.upadateSelectedMealTuple.bind{
+            
+            [weak self] tuple in
+                guard let strongSelf = self else{return}
+            let orderDetailsVC = OrderDetailsVC()
+            orderDetailsVC.orderDetailsViewModel.selectedMeal.value = tuple.selectedMeal
+            orderDetailsVC.orderDetailsViewModel.selectedMealValueDidChanged = tuple.didTapped
+            strongSelf.tabBarController?.pushViewController(VC:orderDetailsVC)
+            
+        }
+        
     }
     
-    var filteredMeals:[Meal] = []{
-        didSet{
-//            homeCollection.reloadData()
-        }
-    }
 //    var dropDown = DropDown(){
 //        didSet{
 //            if dropDown.isHidden{
@@ -65,9 +130,11 @@ class HomeVC: UIViewController {
 //        if dropDown != nil && dropDown.anchorView?.plainView != nil {
 //            dropDown.anchorView?.plainView.removeFromSuperview()
 //        }
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
     }
     
-    func initSearchBar() {
+    func initSearchBar(searchBarFilters:[String]) {
     
         searchBar.enablesReturnKeyAutomatically = false
         searchBar.returnKeyType = UIReturnKeyType.done
@@ -86,17 +153,11 @@ class HomeVC: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(showCarItems), name: Notification.Name(rawValue: "showCarItems"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(countOfCartItems), name: Notification.Name(rawValue: "showCountOfCartItems"), object: nil)
-        arrOfMeals = [[Meal(name: "Cheese Burger", mealDesc: "Burger", price: 10.0,
-                                                     currency: "$", imageName: "burger-png-33925 1",
-                            isLikedYou: false, backgroundImageName: "Rectangle 1", subImagesName: ["burger1","burger2","burger3"], orderAmount: 0),
-                       Meal(name: "Big Mac", mealDesc: "Burger", price: 20.0, currency: "$", imageName: "burger-png-33925 1", isLikedYou: false, backgroundImageName: "Rectangle 2", subImagesName: ["burger4","burger5","burger6"], orderAmount: 0),
-                       Meal(name: "Big Tasty", mealDesc: "Burger", price: 30.0, currency: "$", imageName: "burger-png-33925 1", isLikedYou: false, backgroundImageName: "Rectangle 1", subImagesName: ["burger7","burger8","burger9"], orderAmount: 0)],[Meal(name: "Margarita", mealDesc: "Pizza", price: 10.0,
-                                                     currency: "$", imageName: "pizza", isLikedYou: false,
-                                                                                                                                                                                                                                                                    backgroundImageName: "Rectangle 1", subImagesName: ["pizza1","pizza2","pizza3"], orderAmount: 0),
-                                                                                                                                                                                                                                                               Meal(name: "Vegetables", mealDesc: "Pizza", price: 20.0, currency: "$", imageName: "pizza", isLikedYou: false, backgroundImageName: "Rectangle 2", subImagesName: ["pizza4","pizza5","pizza6"], orderAmount: 0)]]
-        let remainElementsCount = searchBarFilters.count-arrOfMeals.count
-        let remainElements = [[Meal]].init(repeating: [], count: remainElementsCount)
-        arrOfMeals.append(contentsOf:remainElements)
+        NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: Notification.Name(rawValue: "OpenOrCloseSideMenu"), object: nil)
+        
+        setupBinder()
+        homeViewModel.getSearchBarFilters()
+        homeViewModel.getAllMeals()
         setup_Collection()
         scrollView.contentSize = CGSize.init(width: homeCollection.contentSize.width, height: homeCollection.frame.height)
         var config = UICollectionLayoutListConfiguration(appearance: .sidebar)
@@ -120,9 +181,9 @@ class HomeVC: UIViewController {
 //        scrollView.isHidden = true
 //        homeCollection.contentSize.
 //        homeCollection.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        initSearchBar()
     }
 
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,19 +195,9 @@ class HomeVC: UIViewController {
         tabBarItem.image = configureTabBarImage(with: selectedIndex)
         tabBarItem.selectedImage = configureTabBarImage(with: selectedIndex,isSelectedState: true)
         tabBarController?.selectedIndex = selectedIndex
-        if let wishListVCIndex = tabBarController?.viewControllers?.firstIndex(where: {$0 is WishListVC}),let vc = tabBarController?.viewControllers?[wishListVCIndex] as? WishListVC{
-            vc.upadateWishListMeal = {
-                meal , isDeletedState in
-                if let scopeIndex = self.searchBarFilters.firstIndex(where: {$0 == meal.mealDesc}),let modifiedMealIndex = self.arrOfMeals[scopeIndex]
-                    .firstIndex(where: {$0.name == meal.name}){
-                    if isDeletedState{
-                      
-                        self.arrOfMeals[scopeIndex][modifiedMealIndex].isLikedYou = false}
-                }
-                
-            }
-            }
+        homeViewModel.upadateWishListMealDidChange()
         homeCollection.reloadData()
+        countOfCartItems()
     }
 
 //
@@ -155,26 +206,21 @@ class HomeVC: UIViewController {
 //        sideMenuController!.toggle()
 //    }
 //
+    
+    @objc func toggleSideMenu(){
+        
+//        sideMenuController?.toggle()
+    }
+    
     @objc func showCarItems(){
         
-        let cartVC = CartVC()
-        cartVC.shoppingCartMeals = arrOfMeals.reduce([],+).filter{$0.orderAmount>0}
-        cartVC.upadateshoppingCartMeal = {
-            meal in
-            
-            if let scopeIndex = self.searchBarFilters.firstIndex(where: {$0 == meal.mealDesc}),let modifiedMealIndex = self.arrOfMeals[scopeIndex]
-                .firstIndex(where: {$0.name == meal.name}){
-                self.arrOfMeals[scopeIndex][modifiedMealIndex].orderAmount = meal.orderAmount
-            }
-            
-        }
-        self.pushViewController(VC: cartVC)
+        homeViewModel.showCartItems()
     }
     
     @objc func countOfCartItems(){
-        let dicOfItemsCount = ["countOfItems" : "\(arrOfMeals.reduce([],+).filter{$0.orderAmount>0}.map{$0.orderAmount}.reduce(0,+))"]
-        NotificationCenter.default.post(name: Notification.Name(rawValue:"updateCountOfCartItems"), object: nil, userInfo: dicOfItemsCount)
+        homeViewModel.countOfCartItems()
     }
+    
     // MARK: - Setup Collection
     private func setup_Collection() {
         
@@ -185,8 +231,18 @@ class HomeVC: UIViewController {
         homeCollection.dataSource = self
         homeCollection.register(UINib(nibName: "BurgerCell", bundle: nil), forCellWithReuseIdentifier: "BurgerCell")
         optionsCollection.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
-        filteredMeals = arrOfMeals[0]
+        homeViewModel.getFilteredMeals(scopeIndex: 0)
+//        filteredMeals = arrOfMeals[0]
         homeCollection.reloadData()
+    }
+    
+    @IBAction func didCardBttnTapped(_ sender: UIButton) {
+        showCarItems()
+    }
+    
+    @IBAction func didSideMenuBttnTapped(_ sender: UIButton) {
+     //   self.popVCFromNav()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "OpenOrCloseSideMenu"), object: nil)
     }
     /*
     // MARK: - Navigation

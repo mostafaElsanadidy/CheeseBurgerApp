@@ -18,19 +18,15 @@ class OrderDetailsVC: UIViewController {
     @IBOutlet weak var quantityView: UIView!
     
     @IBOutlet weak var countOfCartItemsLabel: UILabel!
+    @IBOutlet weak var countOfCartItemsView: UIViewX!
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var mealDescLabel: UILabel!
     
+    
     @IBOutlet weak var plusBttn: UIButton!
     @IBOutlet weak var minusBttn: UIButton!
-    var selectedMeal:Meal?{
-        didSet{
-            guard let selectedMeal = selectedMeal else{return}
-                selectedMealValueDidChanged?(selectedMeal)
-        }
-    }
-    var selectedMealValueDidChanged : ((_ meal:Meal) -> ())!
-    var scopeBttnFilters = ["Active orders","Fast order"]
+    
+    var orderDetailsViewModel = OrderDetailsViewModel()
     
   //  var currentIndex = 0
     
@@ -45,9 +41,47 @@ class OrderDetailsVC: UIViewController {
 //        tabBarController?.selectedIndex = selectedIndex
         
 //        navBarView.popVC = {self.popVCFromNav()}
+        setupBinder()
         setup_Collection()
-        
-        
+    }
+    
+    func setupBinder(){
+        orderDetailsViewModel.selectedMeal.bind{
+            [weak self] selectedMeal in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                guard let selectedMeal = selectedMeal else{return}
+                strongSelf.orderDetailsViewModel.selectedMealValueDidChanged?(selectedMeal)
+                strongSelf.updateView(with: selectedMeal)
+//                strongSelf.mealsCollection.reloadData()
+            }
+        }
+        orderDetailsViewModel.numOfItemsTuple.bind{
+            [weak self] numOfItemsTuple in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                strongSelf.orderAmountLabel.text = "\(numOfItemsTuple.numOfItems)"
+                guard let flag = numOfItemsTuple.isPlusBttnClickedflag else { return }
+                strongSelf.minusBttn.isUserInteractionEnabled = flag ? numOfItemsTuple.numOfItems > 0 : numOfItemsTuple.numOfItems != 0
+//                strongSelf.minusBttn.isUserInteractionEnabled =
+                var countOfCartItems = (Int(strongSelf.countOfCartItemsLabel.text ?? "") ?? 0)
+                countOfCartItems =  flag ? countOfCartItems + 1 : countOfCartItems - 1
+                print(countOfCartItems)
+                strongSelf.countOfCartItemsLabel.text = "\(countOfCartItems)"
+                strongSelf.countOfCartItemsView.isHidden = countOfCartItems == 0
+                strongSelf.orderDetailsViewModel.selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.numOfItems))}
+            
+        }
+        orderDetailsViewModel.updateSelectedMeal.bind{
+            
+            [weak self] updateSelectedMealAction in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                if let cartVC = strongSelf.navigationController?.topViewController as? CartVC{
+                cartVC.shoppingCartViewModel.updateSelectedMeal = updateSelectedMealAction
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,12 +89,17 @@ class OrderDetailsVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateCountOfCartItemsByNotification), name: Notification.Name(rawValue: "updateCountOfCartItems"), object: nil)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "showCountOfCartItems"), object: nil)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        if let selectedMeal = selectedMeal{ updateView(with: selectedMeal)}
+        optionsCollection.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
+//        if let selectedMeal = selectedMeal{ updateView(with: selectedMeal)}
     }
 
     @objc func updateCountOfCartItemsByNotification(_ notification:Notification){
         
-        countOfCartItemsLabel.text = notification.userInfo!["countOfItems"] as? String
+        let dictionaryValue = notification.userInfo!["countOfItems"] as? String
+        countOfCartItemsLabel.text = dictionaryValue ?? ""
+        if let value = Int(dictionaryValue ?? "") {
+            self.countOfCartItemsView.isHidden = value == 0
+        }
     }
 
     // MARK: - Setup Collection
@@ -112,41 +151,44 @@ class OrderDetailsVC: UIViewController {
     func updateView(with selectedMeal:Meal){
         mealNameLabel.text = selectedMeal.name
         mealDescLabel.text = selectedMeal.mealDesc
-        orderAmountLabel.text = "\(selectedMeal.orderAmount ?? 0)"
+        orderAmountLabel.text = "\(selectedMeal.orderAmount)"
     }
     
-    var numOfItems = 0{
-        didSet{
-            orderAmountLabel.text = "\(numOfItems)"
-            selectedMeal?.orderAmount = numOfItems
-       //     updateQuantityPrice(numOfItems)
-        }
-    }
+//    var numOfItems = 0{
+//        didSet{
+//            orderAmountLabel.text = "\(numOfItems)"
+//            selectedMeal?.orderAmount = numOfItems
+//       //     updateQuantityPrice(numOfItems)
+//        }
+//    }
     
     @IBAction func plusBttnDidTapped(_ sender: UIButton) {
-        if let count = Int(orderAmountLabel.text ?? ""),count != 0{
-            numOfItems = count }
-        numOfItems += 1
         
-        minusBttn.isUserInteractionEnabled = numOfItems > 0
-        let countOfCartItems = (Int(countOfCartItemsLabel.text ?? "") ?? 0) + 1
-        print(countOfCartItems)
-        countOfCartItemsLabel.text = "\(countOfCartItems)"
+        let count = Int(orderAmountLabel.text ?? "")
+        let orderAmount = count != nil ? count : 0
+        print(count,orderAmount,orderAmountLabel.text ?? "")
+        orderDetailsViewModel.plusBttnDidTapped(currentCount: orderAmount!)
         
+        
+//        if let count = Int(orderAmountLabel.text ?? ""),count != 0{
+//                    numOfItems = count }
+//                numOfItems += 1
+//
+//                minusBttn.isUserInteractionEnabled = numOfItems > 0
+//                let countOfCartItems = (Int(countOfCartItemsLabel.text ?? "") ?? 0) + 1
+//                print(countOfCartItems)
+//                countOfCartItemsLabel.text = "\(countOfCartItems)"
     }
     //    @IBAction func plusBttnDidTapped(_ sender: UIButton) {
 //        numOfItems += 1
 //    }
     @IBAction func minusBttnDidTapped(_ sender: UIButton) {
-        if let count = Int(orderAmountLabel.text ?? ""),count != 0{
-            numOfItems = count }
-//        numOfItems = numOfItems == 0 ? 0 : numOfItems - 1
-        numOfItems -= 1
-            let countOfCartItems = (Int(countOfCartItemsLabel.text ?? "") ?? 0) - 1
-        print(countOfCartItems)
-        countOfCartItemsLabel.text = "\(countOfCartItems)"
-        if numOfItems == 0{
-            sender.isUserInteractionEnabled = false}
+        
+        let count = Int(orderAmountLabel.text ?? "")
+        let orderAmount = count != nil ? count : 0
+        orderDetailsViewModel.minusBttnDidTapped(currentCount: orderAmount!)
+        
+        
         
     }
     
@@ -157,7 +199,7 @@ class OrderDetailsVC: UIViewController {
         UIView.transition(with: animatedView, duration: 0.8, options: .transitionFlipFromTop, animations: {
             self.quantityLabel.isHidden.toggle()
             self.quantityView.isHidden.toggle()
-            self.orderAmountLabel.text = "\(self.selectedMeal?.orderAmount ?? 0)"
+            self.orderAmountLabel.text = "\(self.orderDetailsViewModel.selectedMeal.value?.orderAmount ?? 0)"
 
             }, completion: {_ in
         //        self.currentIndex = nextIndex
@@ -180,6 +222,12 @@ class OrderDetailsVC: UIViewController {
 //                self.pushViewController(VC: cartVC)
             }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        orderDetailsViewModel.searchSelectedMealAndChange()
+    }
+    
     @objc func didTimeOut(sender:UIButton) {
 
 //        let isLastIndex = (currentIndex == mainViews.count-1)

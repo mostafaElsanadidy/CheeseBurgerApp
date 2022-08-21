@@ -11,9 +11,9 @@ import UIKit
 extension HomeVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 100{
-            return searchBarFilters.count
+            return homeViewModel.searchBarFilters.value.count
         }else{
-            return filteredMeals.count}
+            return homeViewModel.filteredMeals.value.count}
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -23,11 +23,11 @@ extension HomeVC:UICollectionViewDataSource{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
             if let cell = cell as? OptionCell{
-                cell.segmentedLabel.text = searchBarFilters[indexPath.row]
+                cell.segmentedLabel.text = homeViewModel.searchBarFilters.value[indexPath.row]
                 return cell
             }
             if let cell = cell as? BurgerCell{
-                let meal = filteredMeals[indexPath.row]
+                let meal = homeViewModel.filteredMeals.value[indexPath.row]
 //                cell.mealImageView.image = UIImage.init(named: meal.imageName)
                 cell.delegate = self
                 
@@ -39,14 +39,15 @@ extension HomeVC:UICollectionViewDataSource{
                 if let image = UIImage.init(named: meal.imageName)
                 {
 //                    cell.mealImageView.image = image.resizeImage(image: cell.mealImageView.image, targetSize: cell.mealImageView.frame.size)
-                    cell.mealImageView.image = image.resizedImage(withBounds: cell.mealImageView.bounds.size)
+                    cell.mealImageView.image = image
+//                        .resizedImage(withBounds: cell.mealImageView.frame.size)
                 }
 //                cell.islikedyouImageView.image = UIImage.init(named: meal.isLikedYou ? "selected heart" : "heart")
                 cell.isLikedYou = meal.isLikedYou
                 cell.toggleIsLikedYou = { isLikedYou in
                     if let filterIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row ,
-                       let mealIndex = self.arrOfMeals[filterIndex].firstIndex{$0.name.localizedCaseInsensitiveContains(meal.name)}
-                    {self.arrOfMeals[filterIndex][mealIndex].isLikedYou = isLikedYou
+                       let mealIndex = self.homeViewModel.arrayOfMeals.value[filterIndex].firstIndex(where: {$0.name.localizedCaseInsensitiveContains(meal.name)})
+                    {self.homeViewModel.arrayOfMeals.value[filterIndex][mealIndex].isLikedYou = isLikedYou
 //                        self.filteredMeals[mealIndex].isLikedYou = isLikedYou
                     }
                 }

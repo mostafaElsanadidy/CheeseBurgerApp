@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SideMenuController
 
 extension UIViewController{
     
@@ -70,7 +71,7 @@ extension UIViewController{
 //        let image = UIImage(named: imageName)?.withTintColor(imageColor, renderingMode: renderingMode)
                       
         imageView.image = image
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         view.addSubview(imageView)
         
         //like as badgeView
@@ -88,4 +89,6 @@ extension UIViewController{
          return view.asImage().withRenderingMode(renderingMode)
     
     }
+    
+    
 }

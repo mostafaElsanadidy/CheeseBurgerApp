@@ -18,3 +18,7 @@ struct Meal{
     var subImagesName:[String]
     var orderAmount:Int
 }
+//struct mealSize{
+//    var imageName:String
+//    var price:Double
+//}

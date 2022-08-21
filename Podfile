@@ -5,4 +5,6 @@ target 'CheeseBurgerApp' do
     pod 'Segmentio'
     pod 'LGSegmentedControl'
     pod 'SwipeCellKit'
+    pod 'SideMenuController'
+    pod 'ColorCube'
     end

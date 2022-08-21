@@ -15,18 +15,21 @@ class WishListCell: SwipeCollectionViewCell {
     @IBOutlet weak var mealDescLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
   //  @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var islikedyouView: UIViewX!
     @IBOutlet weak var islikedyouImageView: UIImageView!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var quantityView: UIView!
+    @IBOutlet weak var minusBttn: UIButton!
     
+    var isPlusBttnClickedflag:Bool = true
     var numOfItems = 0{
         didSet{
             quantityLabel.text = "\(numOfItems)"
-            updateQuantityPrice(numOfItems)
+            updateQuantityPrice(numOfItems, isPlusBttnClickedflag)
         }
     }
     
-    var updateQuantityPrice : ((_ quantity:Int) -> ())!
+    var updateQuantityPrice : ((_ quantity:Int, _ isPlusBttnClickedflag:Bool) -> ())!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,14 +38,24 @@ class WishListCell: SwipeCollectionViewCell {
     }
     
     @IBAction func plusBttnDidTapped(_ sender: UIButton) {
-        if let count = Int(quantityLabel.text ?? ""),count != 0{
-            numOfItems = count }
-        numOfItems += 1
+
+        isPlusBttnClickedflag = true
+        
+        let count = Int(quantityLabel.text ?? "")
+        let orderAmount = count != nil ? count : 0
+        numOfItems = orderAmount! + 1
+        self.minusBttn.isUserInteractionEnabled = numOfItems > 0
+//        guard let flag = self.isPlusBttnClickedflag else { return }
+        
     }
+    
     @IBAction func minusBttnDidTapped(_ sender: UIButton) {
-        if let count = Int(quantityLabel.text ?? ""),count != 0{
-            numOfItems = count }
-        numOfItems = numOfItems == 0 ? 0 : numOfItems - 1
+        
+        isPlusBttnClickedflag = false
+        let count = Int(quantityLabel.text ?? "")
+        let orderAmount = count != nil ? count : 0
+        numOfItems = orderAmount! - 1
+        sender.isUserInteractionEnabled = numOfItems != 0
     }
     
 }

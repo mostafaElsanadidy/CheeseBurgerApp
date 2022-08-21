@@ -66,7 +66,7 @@ extension WishListVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout
             
 //            self.homeCollection.reloadData()
             action.fulfill(with: .delete)
-            self.upadateWishListMeal(self.wishListMeals.remove(at: indexPath.row), true)
+            self.wishListViewModel.upadateWishListMeal(self.wishListViewModel.wishListMeals.value.remove(at: indexPath.row), true)
 //            self.filteredMeals.remove(at: indexPath.row)
 //            fulfill(with: .delete)
         }

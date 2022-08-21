@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WishListVC" customModule="CheeseBurgerApp" customModuleProvider="target">
             <connections>
                 <outlet property="countOfCartItemsLabel" destination="kEd-ze-AN4" id="SIv-n6-OgO"/>
+                <outlet property="countOfCartItemsView" destination="kXE-rD-9VT" id="bR2-nm-oeY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wishListCollection" destination="Uti-TW-sFS" id="zQz-5M-OfO"/>
             </connections>
@@ -26,7 +27,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDe-1c-hwf">
                             <rect key="frame" x="0.0" y="20" width="414" height="80"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXE-rD-9VT">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXE-rD-9VT" customClass="UIViewX" customModule="CheeseBurgerApp" customModuleProvider="target">
                                     <rect key="frame" x="362" y="13.5" width="22" height="22"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="900" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEd-ze-AN4">
@@ -53,6 +54,11 @@
                                         <constraint firstAttribute="height" secondItem="kEd-ze-AN4" secondAttribute="height" id="Eix-RD-19N"/>
                                         <constraint firstAttribute="width" secondItem="kEd-ze-AN4" secondAttribute="width" id="bqX-0E-4RM"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="11"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xm1-zN-u7P">
                                     <rect key="frame" x="30" y="27.5" width="23" height="40"/>
@@ -105,7 +111,6 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="3XD-OJ-PKp" firstAttribute="centerY" secondItem="dSm-YI-3hv" secondAttribute="centerY" id="0XZ-f2-SkP"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="6Y1-cC-7MB"/>
                                 <constraint firstItem="kXE-rD-9VT" firstAttribute="bottom" secondItem="3XD-OJ-PKp" secondAttribute="bottom" constant="-27" id="CeM-zl-hdc"/>
                                 <constraint firstItem="Xm1-zN-u7P" firstAttribute="leading" secondItem="aDe-1c-hwf" secondAttribute="leading" constant="30" id="EYX-q5-35E"/>
                                 <constraint firstAttribute="height" constant="80" id="Fdw-Xm-hoK"/>

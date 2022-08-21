@@ -24,6 +24,23 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9g-5F-oLd" customClass="UIViewX" customModule="CheeseBurgerApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="117" height="47"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIY-yU-q8c" customClass="UILabelX" customModule="CheeseBurgerApp" customModuleProvider="target">
+                                <rect key="frame" x="30.5" y="36" width="28" height="2"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.55686274509803924" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="ZJp-qV-fvZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.95294117647058818" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -41,6 +58,9 @@
                 <constraint firstItem="K9g-5F-oLd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ji6-C0-blB"/>
                 <constraint firstItem="gey-ds-stc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Oej-nN-c2t"/>
                 <constraint firstAttribute="bottom" secondItem="K9g-5F-oLd" secondAttribute="bottom" id="RtT-Hi-P1K"/>
+                <constraint firstItem="sIY-yU-q8c" firstAttribute="width" secondItem="gey-ds-stc" secondAttribute="width" multiplier="0.5" id="ZLw-NP-A9k"/>
+                <constraint firstItem="gey-ds-stc" firstAttribute="bottom" secondItem="sIY-yU-q8c" secondAttribute="top" constant="-2" id="ZXo-51-dFd"/>
+                <constraint firstItem="sIY-yU-q8c" firstAttribute="leading" secondItem="gey-ds-stc" secondAttribute="leading" id="jPj-Mh-7iQ"/>
                 <constraint firstItem="gey-ds-stc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="rHW-Nu-9zP"/>
                 <constraint firstItem="K9g-5F-oLd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yRH-ii-bg3"/>
             </constraints>

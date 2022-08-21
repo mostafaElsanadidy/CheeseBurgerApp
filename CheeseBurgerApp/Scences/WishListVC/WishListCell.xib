@@ -51,14 +51,14 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ynj-R6-r96"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9i-KE-UJ8">
                                                 <rect key="frame" x="0.0" y="30" width="181.5" height="50"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                                <color key="textColor" red="0.8862745098" green="0.53333333329999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxx-i8-UsM">
@@ -66,7 +66,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="96q-rR-jGJ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -98,10 +98,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view tag="51" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zx6-51-hsy">
-                                        <rect key="frame" x="350" y="21" width="30" height="88.5"/>
+                                        <rect key="frame" x="350" y="19.5" width="30" height="91"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ff3-dT-eqZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="88.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="91"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYa-wn-pIN">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
@@ -110,40 +110,40 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="+">
-                                                            <color key="titleColor" red="0.65098039220000004" green="0.73725490199999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="plusBttnDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="kHU-1D-yfH"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Z0q-yE-G4P">
-                                                        <rect key="frame" x="0.0" y="32" width="30" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="32" width="30" height="37"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="900" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfx-b9-Psi">
-                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="14.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" red="0.4549019608" green="0.54117647059999996" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbv-rZ-493" userLabel="Qty">
-                                                                <rect key="frame" x="0.0" y="14.5" width="30" height="20"/>
+                                                                <rect key="frame" x="0.0" y="17" width="30" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="rad-24-aEB"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                <color key="textColor" red="0.4549019608" green="0.54117647059999996" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrR-tn-ovi">
-                                                        <rect key="frame" x="0.0" y="73.5" width="30" height="15"/>
+                                                        <rect key="frame" x="0.0" y="76" width="30" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="xH1-Ik-Ldf"/>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="-">
-                                                            <color key="titleColor" red="0.65098039220000004" green="0.73725490199999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="minusBttnDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="z0B-NN-uGF"/>
@@ -189,7 +189,9 @@
             <connections>
                 <outlet property="burgerImageView" destination="7i4-7P-JeH" id="TPg-FB-oh2"/>
                 <outlet property="islikedyouImageView" destination="XJH-Uq-hqZ" id="mBi-wD-ff6"/>
+                <outlet property="islikedyouView" destination="ape-3o-cPx" id="Xai-xd-dZa"/>
                 <outlet property="mealDescLabel" destination="c9i-KE-UJ8" id="agy-BY-916"/>
+                <outlet property="minusBttn" destination="zrR-tn-ovi" id="olF-QN-fJN"/>
                 <outlet property="nameLabel" destination="XqE-Nk-o43" id="bLV-kr-xVi"/>
                 <outlet property="priceLabel" destination="jxx-i8-UsM" id="EvI-Su-72t"/>
                 <outlet property="quantityLabel" destination="Sfx-b9-Psi" id="1wc-WY-A3T"/>

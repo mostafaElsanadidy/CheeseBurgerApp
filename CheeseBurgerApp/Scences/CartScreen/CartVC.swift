@@ -14,20 +14,24 @@ class CartVC: UIViewController {
     @IBOutlet weak var shippingFeedsLabel: UILabel!
     @IBOutlet weak var orderAmountLabel: UILabel!
     @IBOutlet weak var countOfCartItemsLabel: UILabel!
+    @IBOutlet weak var countOfCartItemsView: UIViewX!
+    
     //    @IBOutlet weak var navBarView: NavBarView!
-    var shoppingCartMeals:[Meal] = []{
-        didSet{
-            self.totalPrice = self.shoppingCartMeals.map{Double($0.orderAmount)*$0.price}.reduce(0, +)
-        }
-    }
-    var upadateshoppingCartMeal : ((_ meal:Meal) -> ())!
-    var totalPrice:Double = 0{
-        didSet{
-            orderAmountLabel?.text = "\(totalPrice) "+shoppingCartMeals[0].currency
-            shippingFeedsLabel?.text = "10.0 $"
-            totalLabel?.text = "\(totalPrice+10.0)"
-        }
-    }
+    var shoppingCartViewModel = ShoppingCartViewModel()
+    
+//    var shoppingCartMeals:[Meal] = []{
+//        didSet{
+//            self.totalPrice = self.shoppingCartMeals.map{Double($0.orderAmount)*$0.price}.reduce(0, +)
+//        }
+//    }
+//    var upadateshoppingCartMeal : ((_ meal:Meal) -> ())!
+//    var totalPrice:Double = 0{
+//        didSet{
+//            orderAmountLabel?.text = "\(totalPrice) "+shoppingCartMeals[0].currency
+//            shippingFeedsLabel?.text = "10.0 $"
+//            totalLabel?.text = "\(totalPrice+10.0)"
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +40,51 @@ class CartVC: UIViewController {
         
 //        navBarView.sideMenuBttn.setImage(UIImage.init(named: "left arrow"), for: .normal)
         
+        setupBinder()
+        shoppingCartViewModel.totalPriceDidChange()
+//        orderAmountLabel.text = "\(shoppingCartViewModel.totalPrice.value) $"
+//        shippingFeedsLabel.text = "10.0 $"
+//        totalLabel.text = "\(shoppingCartViewModel.totalPrice.value+10.0)"
         
-        orderAmountLabel.text = "\(totalPrice) $"
-        shippingFeedsLabel.text = "10.0 $"
-        totalLabel.text = "\(totalPrice+10.0)"
+        
         setup_Collection()
     }
 
+    func setupBinder(){
+        shoppingCartViewModel.shoppingCartMeals.bind{
+            [weak self] shoppingCartMeals in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                strongSelf.mealsCollection.reloadData()
+            }
+        }
+        shoppingCartViewModel.totalPrice.bind{
+            [weak self] totalPrice in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                strongSelf.orderAmountLabel?.text = "\(totalPrice) "+"$"
+                strongSelf.shippingFeedsLabel?.text = "10.0 $"
+                strongSelf.totalLabel?.text = "\(totalPrice+10.0)"
+                
+            }
+        }
+        shoppingCartViewModel.isPlusBttnClickedflag.bind{
+            [weak self] flag in
+            guard let strongSelf = self,let flag = flag else{return}
+            var countOfCartItems = (Int(strongSelf.countOfCartItemsLabel.text ?? "") ?? 0)
+            countOfCartItems =  flag ? countOfCartItems + 1 : countOfCartItems - 1
+            
+            print(countOfCartItems)
+            strongSelf.countOfCartItemsLabel.text = "\(countOfCartItems)"
+//            strongSelf.countOfCartItemsView.isHidden = countOfCartItems == 0
+//            strongSelf.orderDetailsViewModel.selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.numOfItems))
+        }
+        shoppingCartViewModel.collectionWillDeleteCellIndex.bind{
+            [weak self] cellIndex in
+            guard let strongSelf = self, let cellIndex = cellIndex else{return}
+            strongSelf.mealsCollection.deleteItems(at: [IndexPath(row: cellIndex, section: 0)])
+        }
+    }
     // MARK: - Setup Collection
     private func setup_Collection() {
         
@@ -61,8 +103,12 @@ class CartVC: UIViewController {
     }
 
     @objc func updateCountOfCartItemsByNotification(_ notification:Notification){
+        let dictionaryValue = notification.userInfo!["countOfItems"] as? String
+        countOfCartItemsLabel.text = dictionaryValue ?? ""
+//        if let value = Int(dictionaryValue ?? "") {
+//            self.countOfCartItemsView.isHidden = value == 0
+//        }
         
-        countOfCartItemsLabel.text = notification.userInfo!["countOfItems"] as? String
     }
     
     @IBAction func didCardBttnTapped(_ sender: UIButton) {

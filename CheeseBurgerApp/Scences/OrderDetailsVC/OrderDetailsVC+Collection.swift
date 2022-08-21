@@ -11,9 +11,9 @@ import UIKit
 extension OrderDetailsVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 100{
-            return scopeBttnFilters.count
+            return orderDetailsViewModel.scopeBttnFilters.count
         }else{
-            return selectedMeal?.subImagesName.count ?? 0 }
+            return orderDetailsViewModel.selectedMeal.value?.subImagesName.count ?? 0 }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -22,11 +22,11 @@ extension OrderDetailsVC:UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         if let cell = cell as? OptionCell{
-            cell.segmentedLabel.text = scopeBttnFilters[indexPath.row]
+            cell.segmentedLabel.text = orderDetailsViewModel.scopeBttnFilters[indexPath.row]
             return cell
         }
         if let cell = cell as? CarouselBurgerCell{
-                cell.burgerImageView.image = UIImage.init(named: selectedMeal?.subImagesName[indexPath.row] ?? "")
+            cell.burgerImageView.image = UIImage.init(named: orderDetailsViewModel.selectedMeal.value?.subImagesName[indexPath.row] ?? "")
                 return cell
         }
         return UICollectionViewCell()

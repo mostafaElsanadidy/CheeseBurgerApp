@@ -76,19 +76,12 @@ extension HomeVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,Swi
                 
                 }
 
-            filteredMeals = arrOfMeals[indexPath.row]
-            if searchBar.text != ""{
-                filteredMeals = filteredMeals.filter{$0.name.localizedCaseInsensitiveContains(searchBar.text!)}
-            }
+            self.homeViewModel.optionCellDidSelected(selectedIndex: indexPath.row, searchBarText: searchBar.text!)
             homeCollection.reloadData()
         }
         else if collectionView == homeCollection{
-            let orderDetailsVC = OrderDetailsVC()
             if let filterIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row {
-                orderDetailsVC.selectedMeal = self.arrOfMeals[filterIndex][indexPath.row]
-                orderDetailsVC.selectedMealValueDidChanged = {meal in self.arrOfMeals[filterIndex][indexPath.row] = meal}
-            }
-            self.tabBarController?.pushViewController(VC:orderDetailsVC)
+                self.homeViewModel.BurgerCellDidSelected(filteredIndex: filterIndex, selectedRow: indexPath.row)}
         }
     }
     
@@ -102,7 +95,7 @@ extension HomeVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,Swi
 //            self.homeCollection.reloadData()
             action.fulfill(with: .delete)
             guard let scopeButtonIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
-            self.arrOfMeals[scopeButtonIndex].remove(at: indexPath.row)
+            self.homeViewModel.arrayOfMeals.value[scopeButtonIndex].remove(at: indexPath.row)
 //            self.filteredMeals.remove(at: indexPath.row)
 //            fulfill(with: .delete)
         }

@@ -10,35 +10,35 @@ import UIKit
 
 extension CartVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shoppingCartMeals.count
+        return self.shoppingCartViewModel.shoppingCartMeals.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "WishListCell"
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WishListCell{
             
-                let meal = shoppingCartMeals[indexPath.row]
+            let meal = shoppingCartViewModel.shoppingCartMeals.value[indexPath.row]
 //                cell.mealImageView.image = UIImage.init(named: meal.imageName)
                 cell.delegate = self
                 
                 cell.nameLabel.text = meal.name
-                cell.mealDescLabel.text = meal.mealDesc
+            cell.mealDescLabel.text = meal.mealDesc.uppercased()
                 cell.priceLabel.text = "\(meal.price) \(meal.currency)"
             cell.quantityView.isHidden = false
-            cell.islikedyouImageView.isHidden = true
+            cell.islikedyouView.isHidden = true
             cell.quantityLabel.text = "\(meal.orderAmount)"
 //                cell.mealImageView.resized_Image()
                 if let image = UIImage.init(named: meal.imageName)
                 {
 //                    cell.mealImageView.image = image.resizeImage(image: cell.mealImageView.image, targetSize: cell.mealImageView.frame.size)
-                    cell.burgerImageView.image = image.resizedImage(withBounds: cell.burgerImageView.bounds.size)
+                    cell.burgerImageView.image = image
+//                        .resizedImage(withBounds: cell.burgerImageView.bounds.size)
                 }
             cell.updateQuantityPrice = {
-                self.shoppingCartMeals[indexPath.row].orderAmount = $0
-//                collectionView.dele
-                self.totalPrice = self.shoppingCartMeals.map{Double($0.orderAmount)*$0.price}.reduce(0, +)
-                self.upadateshoppingCartMeal(self.shoppingCartMeals[indexPath.row])
+                self.shoppingCartViewModel.quantityPriceDidChange(selectedIndex: indexPath.row, quantityPrice: $0)
+                self.shoppingCartViewModel.isPlusBttnClickedflag.value = $1
             }
+            
 //                cell.islikedyouImageView.image = UIImage.init(named: meal.isLikedYou ? "selected heart" : "heart")
                 return cell
             }

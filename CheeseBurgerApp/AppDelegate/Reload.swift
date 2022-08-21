@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenuController
 
 protocol ReloadDelegate {
     func goToHomeVC(window:UIWindow)
@@ -24,15 +25,13 @@ extension ReloadDelegate {
     
 //        let tabBarController = TabBar_Controller()
         let arrOfVC_ID:[String] = []
-        var arrOfVC:[UIViewController] = [HomeVC()]
+        var arrOfVC:[UIViewController] = [HomeVC(),WishListVC(),ThirdTabVC()]
             
             for vcIdentifier in arrOfVC_ID{
                 let viewController = storyboard.instantiateViewController(withIdentifier: vcIdentifier)
                 arrOfVC.append(viewController)
             }
             tabBarController.viewControllers = arrOfVC
-        tabBarController.viewControllers?.append(WishListVC())
-        tabBarController.viewControllers?.append(OrderDetailsVC())
         
             //            // create the side controller
             //        let SideMenuVC = storyboard.instantiateViewController(withIdentifier: "SideMenuVC") as! SideMenuVC
@@ -42,7 +41,14 @@ extension ReloadDelegate {
         }
        
 //        tabBarController.tabBar.backgroundColor = .red
-       
+//        let SideMenuVC = storyboard.instantiateViewController(withIdentifier: "SideMenuVC") as! SideMenuVC
+//        SideMenuVC.tabBar_Controller = tabBarController
+//
+//                  let sideMenuViewController = SideMenuController()
+//                  // embed the side and center controllers
+//                            sideMenuViewController.embed(sideViewController: SideMenuVC)
+//                            sideMenuViewController.embed(centerViewController: tabBarController)
+        
         let navController = UINavigationController.init(rootViewController: tabBarController)
    
     

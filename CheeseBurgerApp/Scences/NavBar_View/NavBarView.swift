@@ -64,7 +64,7 @@ class NavBarView: UIView {
             .layer.cornerRadius = 11
         view.frame = bounds
         view.frame.size.width = UIScreen.main.bounds.width
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCountOfCartItemsByNotification), name: Notification.Name(rawValue: "updateCountOfCartItems"), object: nil)
         self.addSubview(self.view)
     }
     
@@ -89,5 +89,9 @@ class NavBarView: UIView {
         }
     
     
+    @objc func updateCountOfCartItemsByNotification(_ notification:Notification){
+        
+        notiLabel.text = notification.userInfo!["countOfItems"] as? String
+    }
     
 }
