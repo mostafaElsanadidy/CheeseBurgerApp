@@ -82,7 +82,25 @@ class CartVC: UIViewController {
         shoppingCartViewModel.collectionWillDeleteCellIndex.bind{
             [weak self] cellIndex in
             guard let strongSelf = self, let cellIndex = cellIndex else{return}
+            
+//            strongSelf.mealsCollection.beginUpdates()
+//            let indexPathDateRow = [IndexPath(row: 0, section: 0),IndexPath(row: 2, section: 0)]
+//            print(strongSelf.mealsCollection.indexPathsForVisibleItems)
+//            
+//            var array = strongSelf.mealsCollection.indexPathsForVisibleItems
+//            array = array.filter{$0 != IndexPath(row: cellIndex, section: 0)}
+//            print(array)
+//            strongSelf.mealsCollection.reloadItems(at: array)
+//            strongSelf.mealsCollection.reloadData()
+//            strongSelf.mealsCollection.
             strongSelf.mealsCollection.deleteItems(at: [IndexPath(row: cellIndex, section: 0)])
+            let count = strongSelf.shoppingCartViewModel.shoppingCartMeals.value.count
+//            for i in 0..<count{
+//                
+//            }
+//            strongSelf.mealsCollection.endUpdates()
+//            strongSelf.mealsCollection.deleteItems(at: [IndexPath(row: cellIndex, section: 0)])
+//            strongSelf.mealsCollection.reloadData()
         }
     }
     // MARK: - Setup Collection

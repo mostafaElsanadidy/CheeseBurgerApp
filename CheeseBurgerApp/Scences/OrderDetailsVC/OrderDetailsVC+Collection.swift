@@ -13,7 +13,11 @@ extension OrderDetailsVC:UICollectionViewDataSource{
         if collectionView.tag == 100{
             return orderDetailsViewModel.scopeBttnFilters.count
         }else{
-            return orderDetailsViewModel.selectedMeal.value?.subImagesName.count ?? 0 }
+            return orderDetailsViewModel.selectedMeal.value?.mealSizes.count ?? 0 }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -26,7 +30,7 @@ extension OrderDetailsVC:UICollectionViewDataSource{
             return cell
         }
         if let cell = cell as? CarouselBurgerCell{
-            cell.burgerImageView.image = UIImage.init(named: orderDetailsViewModel.selectedMeal.value?.subImagesName[indexPath.row] ?? "")
+            cell.burgerImageView.image = UIImage.init(named: orderDetailsViewModel.selectedMeal.value?.mealSizes[indexPath.row].imageName ?? "")
                 return cell
         }
         return UICollectionViewCell()

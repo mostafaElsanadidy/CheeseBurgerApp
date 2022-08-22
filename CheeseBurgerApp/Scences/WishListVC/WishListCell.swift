@@ -21,10 +21,15 @@ class WishListCell: SwipeCollectionViewCell {
     @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var minusBttn: UIButton!
     
+    var indexPath:IndexPath!
+    
     var isPlusBttnClickedflag:Bool = true
     var numOfItems = 0{
         didSet{
             quantityLabel.text = "\(numOfItems)"
+//            if numOfItems == 0{
+//                self.delete(self)
+//            }
             updateQuantityPrice(numOfItems, isPlusBttnClickedflag)
         }
     }
@@ -53,6 +58,7 @@ class WishListCell: SwipeCollectionViewCell {
         
         isPlusBttnClickedflag = false
         let count = Int(quantityLabel.text ?? "")
+        print(count)
         let orderAmount = count != nil ? count : 0
         numOfItems = orderAmount! - 1
         sender.isUserInteractionEnabled = numOfItems != 0

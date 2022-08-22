@@ -17,17 +17,23 @@ final class HomeList_VM {
     var countOfItems: Observable<String> = Observable("")
     var filteredMeals:Observable<[Meal]> = Observable([])
     var wishListMeals:Observable<[Meal]> = Observable([])
+//    var newArray:[Meal] = []
     
     
     func getAllMeals() {
-        arrayOfMeals.value = [[Meal(name: "Cheese Burger", mealDesc: "Burger", price: 10.0,
-                                    currency: "$", imageName: "burger-png-33925 1",
-           isLikedYou: false, backgroundImageName: "Rectangle 1", subImagesName: ["burger1","burger2","burger3"], orderAmount: 0),
-      Meal(name: "Big Mac", mealDesc: "Burger", price: 20.0, currency: "$", imageName: "burger-png-33925 1", isLikedYou: false, backgroundImageName: "Rectangle 2", subImagesName: ["burger4","burger5","burger6"], orderAmount: 0),
-      Meal(name: "Big Tasty", mealDesc: "Burger", price: 30.0, currency: "$", imageName: "burger-png-33925 1", isLikedYou: false, backgroundImageName: "Rectangle 1", subImagesName: ["burger7","burger8","burger9"], orderAmount: 0)],[Meal(name: "Margarita", mealDesc: "Pizza", price: 10.0,
-                                    currency: "$", imageName: "pizza", isLikedYou: false,
-                                                                                                                                                                                                                                                   backgroundImageName: "Rectangle 1", subImagesName: ["pizza1","pizza2","pizza3"], orderAmount: 0),
-                                                                                                                                                                                                                                              Meal(name: "Vegetables", mealDesc: "Pizza", price: 20.0, currency: "$", imageName: "pizza", isLikedYou: false, backgroundImageName: "Rectangle 2", subImagesName: ["pizza4","pizza5","pizza6"], orderAmount: 0)]]
+        arrayOfMeals.value =
+        [[Meal(name: "Cheese Burger", mealDesc: "Burger", price: 10.0,
+               currency: "$", imageName: "burger-png-33925 1",
+               isLikedYou: false, backgroundImageName: "Rectangle 1", mealSizes: [MealSize(imageName: "burger1", price: 10.0, orderAmount: 0),MealSize(imageName: "burger2", price: 15.0, orderAmount: 0),MealSize(imageName: "burger3", price: 20.0, orderAmount: 0)]),
+          Meal(name: "Big Mac", mealDesc: "Burger", price: 20.0, currency: "$", imageName: "burger-png-33925 1", isLikedYou: false, backgroundImageName: "Rectangle 2", mealSizes: [MealSize(imageName: "burger4", price: 10.0, orderAmount: 0),MealSize(imageName: "burger5", price: 15.0, orderAmount: 0),MealSize(imageName: "burger6", price: 20.0, orderAmount: 0)]),
+          Meal(name: "Big Tasty", mealDesc: "Burger", price: 30.0, currency: "$", imageName: "burger-png-33925 1", isLikedYou: false, backgroundImageName: "Rectangle 1", mealSizes: [MealSize(imageName: "burger7", price: 10.0, orderAmount:    0),MealSize(imageName: "burger8", price: 15.0, orderAmount: 0),MealSize(imageName: "burger9", price: 20.0, orderAmount: 0)])],
+         [Meal(name: "Margarita", mealDesc: "Pizza", price: 10.0,
+               currency: "$", imageName: "pizza", isLikedYou: false,
+               backgroundImageName: "Rectangle 1",
+               mealSizes: [MealSize(imageName: "pizza1",
+               price: 10.0, orderAmount: 0),MealSize(imageName: "pizza2", price: 15.0, orderAmount: 0),MealSize(imageName: "pizza3", price: 20.0, orderAmount: 0)]),
+          Meal(name: "Vegetables", mealDesc: "Pizza", price: 20.0, currency: "$",
+               imageName: "pizza", isLikedYou: false, backgroundImageName: "Rectangle 2", mealSizes: [MealSize(imageName: "pizza4", price: 10.0, orderAmount: 0),MealSize(imageName: "pizza5", price: 15.0, orderAmount: 0),MealSize(imageName: "pizza6", price: 20.0, orderAmount: 0)])]]
         let remainElementsCount = searchBarFilters.value.count - arrayOfMeals.value.count
 let remainElements = [[Meal]].init(repeating: [], count: remainElementsCount)
         arrayOfMeals.value.append(contentsOf:remainElements)
@@ -63,21 +69,82 @@ let remainElements = [[Meal]].init(repeating: [], count: remainElementsCount)
     
     func showCartItems() {
         
-        self.upadateshoppingCartMealTuple.value = (meals: arrayOfMeals.value.reduce([],+).filter{$0.orderAmount>0},
+        self.upadateshoppingCartMealTuple.value = (meals: changeCartItems()
+                                                   ,
                                                    didTapped: {
             meal in
             
-            if let scopeIndex = self.searchBarFilters.value.firstIndex(where: {$0 == meal.mealDesc}),let modifiedMealIndex = self.arrayOfMeals.value[scopeIndex]
-                .firstIndex(where: {$0.name == meal.name}){
-                self.arrayOfMeals.value[scopeIndex][modifiedMealIndex].orderAmount = meal.orderAmount
+//            updateSelectedMealSize.value = {
+//                mealSize in
+//    //            let flag = ($0.imageName == mealSize.imageName && $0.price == mealSize.price)
+//    //            if flag{
+//                if let mealSizeIndex = self.selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == mealSize.imageName && $0.price == mealSize.price}){
+//                    self.selectedMealWillChange(newOrderAmount: mealSize.orderAmount, mealSizeIndex: mealSizeIndex)}
+//    //            }
+//                
+//            }
+            if let scopeIndex = self.searchBarFilters.value.firstIndex(where: {$0 == meal.mealDesc}),
+               let modifiedMealIndex = self.arrayOfMeals.value[scopeIndex]
+                .firstIndex(where: {$0.name == meal.name}),
+               let mealSizeIndex = self.arrayOfMeals.value[scopeIndex][modifiedMealIndex].mealSizes.firstIndex(where: {$0.imageName == meal.mealSizes[0].imageName && $0.price == meal.mealSizes[0].price})
+            {
+                
+                self.arrayOfMeals.value[scopeIndex][modifiedMealIndex].mealSizes[mealSizeIndex] = meal.mealSizes[0]
             }
             
         })
     }
     
-    func countOfCartItems(){
-        countOfItems.value = "\(arrayOfMeals.value.reduce([],+).filter{$0.orderAmount>0}.map{$0.orderAmount}.reduce(0,+))"
+    func changeCartItems() -> [Meal]{
+        
+        var newArray : [Meal] = []
+        let arrayOfCartMealsSize = arrayOfMeals.value.reduce([],+).map{$0.mealSizes}.reduce([],+).filter{$0.orderAmount>0}
+        let arr = arrayOfMeals.value.reduce([],+)
+        
+        var ind = 0
+            
+        for mealSize in arrayOfCartMealsSize{
+            var meal:Meal = arr[ind]
+            while !meal.mealSizes.contains(where: {$0 == mealSize}){
+                if ind > arr.count - 1{
+                    break
+                }
+                ind += 1
+                meal = arr[ind]
+            }
+            meal.mealSizes = [mealSize]
+            
+            newArray.append(meal)
+        }
+        
+//        let newIndexOfMeal = arr.compactMap{$0.mealSizes?.filter{$0.orderAmount>0}}
+//        for i in 0..<newIndexOfMeal.count{
+//            for j in newIndexOfMeal[i]{
+//                arr[i].mealSizes = j
+//                newArray.append(arr)
+//            }
+//        }
+//        let arrayOfCartMeals = arrayOfMeals.value.reduce([],+).map{$0.mealSizes = newIndexOfMeal[arrayOfMeals.listener.firstIndex(of: $0)]}
+//        reduce([Meal]()){
+//            meal , mealSize -> [Meal] in
+//            var cartMeal = meal
+//                cartMeal.mealSizes = [mealSize]
+//            return cartMeal
+//        }
+        
+      return newArray
+        
     }
+    func countOfCartItems(){
+        
+        let cartItems = changeCartItems()
+        
+        
+        countOfItems.value = "\(cartItems.map{$0.mealSizes[0].orderAmount}.reduce(0,+))"
+        
+    }
+    
+    
     
     func optionCellDidSelected(selectedIndex:Int, searchBarText:String){
         self.filteredMeals.value = self.arrayOfMeals.value[selectedIndex]

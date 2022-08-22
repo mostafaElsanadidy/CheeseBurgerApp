@@ -52,15 +52,37 @@ class OrderDetailsVC: UIViewController {
             DispatchQueue.main.async{
                 guard let selectedMeal = selectedMeal else{return}
                 strongSelf.orderDetailsViewModel.selectedMealValueDidChanged?(selectedMeal)
-                strongSelf.updateView(with: selectedMeal)
+                let mealSize = selectedMeal.mealSizes[strongSelf.orderDetailsViewModel.currentPage.value]
+                strongSelf.updateView(with: selectedMeal,mealSize: mealSize)
 //                strongSelf.mealsCollection.reloadData()
             }
         }
+        
+        orderDetailsViewModel.currentPage.bind{
+            [weak self] currentPage in
+            guard let strongSelf = self else{return}
+            DispatchQueue.main.async{
+                guard let meal = strongSelf.orderDetailsViewModel.selectedMeal.value  else { return }
+                let mealSize = meal.mealSizes[currentPage]
+                strongSelf.updateView(with: meal,mealSize: mealSize)
+//                strongSelf.mealsCollection.reloadData()
+            }}
+        
+//        orderDetailsViewModel.selectedMealSize.bind{
+//            [weak self] selectedMealSize in
+//            guard let strongSelf = self,let selectedMealSize = selectedMealSize else{return}
+//            DispatchQueue.main.async {
+////                selectedMealValueDidChanged
+//                if let index = strongSelf.orderDetailsViewModel.selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == selectedMealSize.imageName}){
+//                    strongSelf.orderDetailsViewModel.selectedMeal.value?.mealSizes[index] = selectedMealSize}
+//            }
+//        }
         orderDetailsViewModel.numOfItemsTuple.bind{
             [weak self] numOfItemsTuple in
             guard let strongSelf = self else{return}
             DispatchQueue.main.async{
                 strongSelf.orderAmountLabel.text = "\(numOfItemsTuple.numOfItems)"
+                strongSelf.orderDetailsViewModel.selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.numOfItems), mealSizeIndex: strongSelf.orderDetailsViewModel.currentPage.value)
                 guard let flag = numOfItemsTuple.isPlusBttnClickedflag else { return }
                 strongSelf.minusBttn.isUserInteractionEnabled = flag ? numOfItemsTuple.numOfItems > 0 : numOfItemsTuple.numOfItems != 0
 //                strongSelf.minusBttn.isUserInteractionEnabled =
@@ -69,10 +91,13 @@ class OrderDetailsVC: UIViewController {
                 print(countOfCartItems)
                 strongSelf.countOfCartItemsLabel.text = "\(countOfCartItems)"
                 strongSelf.countOfCartItemsView.isHidden = countOfCartItems == 0
-                strongSelf.orderDetailsViewModel.selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.numOfItems))}
+                
+//                strongSelf.orderAmountLabel.text = "\(numOfItemsTuple.numOfItems)"
+                
+            }
             
         }
-        orderDetailsViewModel.updateSelectedMeal.bind{
+        orderDetailsViewModel.updateSelectedMealSize.bind{
             
             [weak self] updateSelectedMealAction in
             guard let strongSelf = self else{return}
@@ -90,6 +115,12 @@ class OrderDetailsVC: UIViewController {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "showCountOfCartItems"), object: nil)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         optionsCollection.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
+        orderDetailsViewModel.viewWillAppear()
+//        currentPage = 0
+        print(orderDetailsViewModel.selectedMeal.value)
+//        orderDetailsViewModel.selectedMealSize = orderDetailsViewModel.selectedMeal.value?.mealSizes[currentPage]
+//        guard let selectedMealSize = selectedMealSize else{return}
+//                    self.numOfItemsTuple.value = (numOfItems:selectedMealSize.orderAmount,isPlusBttnClickedflag:nil)
 //        if let selectedMeal = selectedMeal{ updateView(with: selectedMeal)}
     }
 
@@ -108,9 +139,10 @@ class OrderDetailsVC: UIViewController {
         optionsCollection.dataSource = self
         optionsCollection.delegate = self
         optionsCollection.register(UINib(nibName: "OptionCell", bundle: nil), forCellWithReuseIdentifier: "OptionCell")
-//        mealsCollection.delegate = self
+        mealsCollection.delegate = self
         mealsCollection.dataSource = self
         mealsCollection.register(UINib(nibName: "CarouselBurgerCell", bundle: nil), forCellWithReuseIdentifier: "CarouselBurgerCell")
+        
 //        if let layout = mealsCollection.collectionViewLayout as? UPCarouselFlowLayout{
 //            layout.spacingMode = .fixed(spacing: 30)
 //        }
@@ -118,12 +150,15 @@ class OrderDetailsVC: UIViewController {
         self.mealsCollection.showsHorizontalScrollIndicator = false
          
          let floawLayout = UPCarouselFlowLayout()
-        let itemwidth = UIScreen.main.bounds.size.width - 100
-         floawLayout.itemSize = CGSize(width: itemwidth, height: mealsCollection.frame.size.height-30)
+        let paddingSpace = 10*(1.3+1)
+        let availableWidth = mealsCollection.frame.size.width-paddingSpace
+        let widthPerItem = availableWidth/1.2
+        let itemwidth = CGFloat(widthPerItem)
+         floawLayout.itemSize = CGSize(width: itemwidth, height: 250)
          floawLayout.scrollDirection = .horizontal
          floawLayout.sideItemScale = 0.6
          floawLayout.sideItemAlpha = 1.0
-         floawLayout.spacingMode = .fixed(spacing: -20)
+//         floawLayout.spacingMode = .fixed(spacing: -40)
          mealsCollection.collectionViewLayout = floawLayout
         
 //        if let bttn = self.quantityView.viewWithTag(500) as? UIButton {
@@ -148,10 +183,14 @@ class OrderDetailsVC: UIViewController {
 //        print("mostafa")
 //
 //    }
-    func updateView(with selectedMeal:Meal){
+    func updateView(with selectedMeal:Meal,mealSize: MealSize? = nil){
+        print(mealSize)
+        let meal_Size = mealSize == nil ? selectedMeal.mealSizes[0] : mealSize
+        
         mealNameLabel.text = selectedMeal.name
         mealDescLabel.text = selectedMeal.mealDesc
-        orderAmountLabel.text = "\(selectedMeal.orderAmount)"
+        
+        orderAmountLabel.text = "\(meal_Size!.orderAmount)"
     }
     
 //    var numOfItems = 0{
@@ -199,7 +238,8 @@ class OrderDetailsVC: UIViewController {
         UIView.transition(with: animatedView, duration: 0.8, options: .transitionFlipFromTop, animations: {
             self.quantityLabel.isHidden.toggle()
             self.quantityView.isHidden.toggle()
-            self.orderAmountLabel.text = "\(self.orderDetailsViewModel.selectedMeal.value?.orderAmount ?? 0)"
+            
+//            self.orderAmountLabel.text = "\(self.orderDetailsViewModel.selectedMeal.value.orderAmount ?? 0)"
 
             }, completion: {_ in
         //        self.currentIndex = nextIndex
@@ -225,7 +265,7 @@ class OrderDetailsVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        orderDetailsViewModel.searchSelectedMealAndChange()
+        orderDetailsViewModel.searchSelectedMealSizeAndChange()
     }
     
     @objc func didTimeOut(sender:UIButton) {
@@ -247,12 +287,8 @@ class OrderDetailsVC: UIViewController {
         let layout = self.mealsCollection.collectionViewLayout as! UPCarouselFlowLayout
         let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
         let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
-        currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
-    }
-    fileprivate var currentPage: Int = 0 {
-        didSet {
-            print("page at centre = \(currentPage)")
-        }
+        let currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
+        orderDetailsViewModel.currentPageWillChange(currentPage)
     }
     
     fileprivate var pageSize: CGSize {

@@ -15,10 +15,12 @@ struct Meal{
     var imageName:String
     var isLikedYou:Bool
     var backgroundImageName:String
-    var subImagesName:[String]
+    var mealSizes:[MealSize]
+//    var orderAmount:Int
+}
+
+struct MealSize:Equatable{
+    var imageName:String
+    var price:Double
     var orderAmount:Int
 }
-//struct mealSize{
-//    var imageName:String
-//    var price:Double
-//}

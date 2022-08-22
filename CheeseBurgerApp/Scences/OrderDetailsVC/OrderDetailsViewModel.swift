@@ -8,17 +8,39 @@
 import Foundation
 final class OrderDetailsViewModel {
     
+//    var selectedMeal : Observable<(meal:Meal?,atIndex:Int?)> = Observable((meal:nil,atIndex:nil))
     var selectedMeal : Observable<Meal?> = Observable(nil)
+    
+    var currentPage: Observable<Int> = Observable(0)
+//    var selectedMealSize: MealSize? = nil
+//    {
+//        didSet{
+//            guard let selectedMealSize = selectedMealSize else{return}
+//            self.numOfItemsTuple.value = (numOfItems:selectedMealSize.orderAmount,isPlusBttnClickedflag:nil)
+////            self.selectedMealWillChange(newOrderAmount: selectedMealSize.orderAmount)
+//            
+//        }
+//    }
+//    var selectedMealSizeIndex : Observable<Int> = Observable(0)
   //  var isPlusBttnClickedflag: Observable<Bool?> = Observable(nil)
 //    var scopeBttnFilters : Observable<[String]> = Observable([""])
     
     var selectedMealValueDidChanged : ((_ meal:Meal) -> ())!
-    var updateSelectedMeal : Observable<((_ meal:Meal) -> ())?> = Observable(nil)
+    var updateSelectedMealSize : Observable<((_ meal:MealSize) -> ())?> = Observable(nil)
+    
     
     var scopeBttnFilters = ["Active orders","Fast order"]
     
-    var numOfItemsTuple : Observable<(numOfItems:Int,isPlusBttnClickedflag:Bool?)> = Observable((numOfItems:0,isPlusBttnClickedflag:nil))
+    var numOfItemsTuple : Observable<(numOfItems:Int,isPlusBttnClickedflag:Bool?)> = Observable((numOfItems: 0,isPlusBttnClickedflag:nil))
     
+    
+    func viewWillAppear() {
+        self.numOfItemsTuple.value = (numOfItems: selectedMeal.value?.mealSizes[currentPage.value].orderAmount ?? 0, isPlusBttnClickedflag: nil)
+    }
+    
+    func currentPageWillChange(_ value:Int) {
+        self.currentPage.value = value
+    }
     
     func plusBttnDidTapped(currentCount:Int){
         
@@ -33,15 +55,28 @@ final class OrderDetailsViewModel {
         
             
     }
-    func searchSelectedMealAndChange(){
+    func searchSelectedMealSizeAndChange(){
         
-        updateSelectedMeal.value = {
-            if $0.name == self.selectedMeal.value?.name && $0.mealDesc == self.selectedMeal.value?.mealDesc{
-                self.selectedMealWillChange(newOrderAmount: $0.orderAmount)
-            }}
+//        guard let mealSize = self.selectedMeal.value?.mealSizes[mealSizeIndex] else { return }
+        updateSelectedMealSize.value = {
+            mealSize in
+//            let flag = ($0.imageName == mealSize.imageName && $0.price == mealSize.price)
+//            if flag{
+            
+            if let mealSizeIndex = self.selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == mealSize.imageName && $0.price == mealSize.price}){
+                self.selectedMealWillChange(newOrderAmount: mealSize.orderAmount, mealSizeIndex: mealSizeIndex)}
+//            }
+            
+        }
     }
-    func selectedMealWillChange(newOrderAmount:Int) {
-        selectedMeal.value?.orderAmount = newOrderAmount
+    func selectedMealWillChange(newOrderAmount:Int?, mealSizeIndex:Int) {
+        guard let newOrderAmount = newOrderAmount
+//                , let index = selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == selectedMealSize?.imageName && $0.price == self.selectedMealSize?.price})
+        else {return}
+        print(index, "jknjknkj")
+        print(newOrderAmount)
+        selectedMeal.value?.mealSizes[mealSizeIndex].orderAmount = newOrderAmount
+//        selectedMealSize?.orderAmount = newOrderAmount
     }
     
 }

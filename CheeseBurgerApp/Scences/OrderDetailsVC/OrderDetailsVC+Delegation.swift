@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import UPCarouselFlowLayout
 
 
 extension OrderDetailsVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -58,6 +59,16 @@ extension OrderDetailsVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLa
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath)
+//        orderDetailsViewModel.selectedMealSize = orderDetailsViewModel.selectedMeal.value?.mealSizes[indexPath.row]
+    }
     
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//                let selectedCell = Int(scrollView.contentOffset.x/self.mealsCollection.frame.width)
+//                print(selectedCell)
+//
+//
+//    }
 }
 
