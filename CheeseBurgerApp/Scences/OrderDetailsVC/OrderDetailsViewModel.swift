@@ -8,23 +8,10 @@
 import Foundation
 final class OrderDetailsViewModel {
     
-//    var selectedMeal : Observable<(meal:Meal?,atIndex:Int?)> = Observable((meal:nil,atIndex:nil))
     var selectedMeal : Observable<Meal?> = Observable(nil)
     
     var currentPage: Observable<Int> = Observable(0)
-//    var selectedMealSize: MealSize? = nil
-//    {
-//        didSet{
-//            guard let selectedMealSize = selectedMealSize else{return}
-//            self.numOfItemsTuple.value = (numOfItems:selectedMealSize.orderAmount,isPlusBttnClickedflag:nil)
-////            self.selectedMealWillChange(newOrderAmount: selectedMealSize.orderAmount)
-//            
-//        }
-//    }
-//    var selectedMealSizeIndex : Observable<Int> = Observable(0)
-  //  var isPlusBttnClickedflag: Observable<Bool?> = Observable(nil)
-//    var scopeBttnFilters : Observable<[String]> = Observable([""])
-    
+
     var selectedMealValueDidChanged : ((_ meal:Meal) -> ())!
     var updateSelectedMealSize : Observable<((_ meal:MealSize) -> ())?> = Observable(nil)
     
@@ -57,15 +44,11 @@ final class OrderDetailsViewModel {
     }
     func searchSelectedMealSizeAndChange(){
         
-//        guard let mealSize = self.selectedMeal.value?.mealSizes[mealSizeIndex] else { return }
         updateSelectedMealSize.value = {
             mealSize in
-//            let flag = ($0.imageName == mealSize.imageName && $0.price == mealSize.price)
-//            if flag{
-            
+
             if let mealSizeIndex = self.selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == mealSize.imageName && $0.price == mealSize.price}){
                 self.selectedMealWillChange(newOrderAmount: mealSize.orderAmount, mealSizeIndex: mealSizeIndex)}
-//            }
             
         }
     }
@@ -76,7 +59,6 @@ final class OrderDetailsViewModel {
         print(index, "jknjknkj")
         print(newOrderAmount)
         selectedMeal.value?.mealSizes[mealSizeIndex].orderAmount = newOrderAmount
-//        selectedMealSize?.orderAmount = newOrderAmount
     }
     func addToCart() {
         selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.value.numOfItems), mealSizeIndex: currentPage.value)

@@ -16,10 +16,7 @@ final class ShoppingCartViewModel {
     var updateShoppingCartMeal : ((_ meal:Meal) -> ())!
     var updateSelectedMeal : ((_ meal:MealSize) -> ())!
     var collectionWillDeleteCellIndex: Observable<Int?> = Observable(nil)
-   
-//    var updateQuantityPrice : Observable<((_ quantity:Int) -> ())> = Observable({_ in})
-    
-    
+  
     func quantityPriceDidChange(selectedIndex:Int,quantityPrice:Int){
         
         if quantityPrice == 0{

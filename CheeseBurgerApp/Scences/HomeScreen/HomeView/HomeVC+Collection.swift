@@ -28,27 +28,21 @@ extension HomeVC:UICollectionViewDataSource{
             }
             if let cell = cell as? BurgerCell{
                 let meal = homeViewModel.filteredMeals.value[indexPath.row]
-//                cell.mealImageView.image = UIImage.init(named: meal.imageName)
                 cell.delegate = self
                 
                 cell.nameLabel.text = meal.name
                 cell.backgroundImageView.image = UIImage.init(named: meal.backgroundImageName)
                 cell.mealDescLabel.text = meal.mealDesc
                 cell.priceLabel.text = "\(meal.price) \(meal.currency)"
-//                cell.mealImageView.resized_Image()
                 if let image = UIImage.init(named: meal.imageName)
                 {
-//                    cell.mealImageView.image = image.resizeImage(image: cell.mealImageView.image, targetSize: cell.mealImageView.frame.size)
                     cell.mealImageView.image = image
-//                        .resizedImage(withBounds: cell.mealImageView.frame.size)
                 }
-//                cell.islikedyouImageView.image = UIImage.init(named: meal.isLikedYou ? "selected heart" : "heart")
                 cell.isLikedYou = meal.isLikedYou
                 cell.toggleIsLikedYou = { isLikedYou in
                     if let filterIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row ,
                        let mealIndex = self.homeViewModel.arrayOfMeals.value[filterIndex].firstIndex(where: {$0.name.localizedCaseInsensitiveContains(meal.name)})
                     {self.homeViewModel.arrayOfMeals.value[filterIndex][mealIndex].isLikedYou = isLikedYou
-//                        self.filteredMeals[mealIndex].isLikedYou = isLikedYou
                     }
                 }
                 return cell

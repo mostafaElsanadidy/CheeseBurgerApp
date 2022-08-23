@@ -28,19 +28,9 @@ class OrderDetailsVC: UIViewController {
     
     var orderDetailsViewModel = OrderDetailsViewModel()
     
-  //  var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-//        guard let selectedIndex = tabBarController?.tabBar.items?.firstIndex(of: tabBarItem) else{return}
-//        tabBarItem.title = ""
-//        tabBarItem.image = configureTabBarImage(with: selectedIndex)
-//        tabBarItem.selectedImage = configureTabBarImage(with: selectedIndex,isSelectedState: true)
-//        tabBarController?.selectedIndex = selectedIndex
-        
-//        navBarView.popVC = {self.popVCFromNav()}
         setupBinder()
         setup_Collection()
     }
@@ -54,7 +44,6 @@ class OrderDetailsVC: UIViewController {
                 strongSelf.orderDetailsViewModel.selectedMealValueDidChanged?(selectedMeal)
                 let mealSize = selectedMeal.mealSizes[strongSelf.orderDetailsViewModel.currentPage.value]
                 strongSelf.updateView(with: selectedMeal,mealSize: mealSize)
-//                strongSelf.mealsCollection.reloadData()
             }
         }
         
@@ -65,18 +54,7 @@ class OrderDetailsVC: UIViewController {
                 guard let meal = strongSelf.orderDetailsViewModel.selectedMeal.value  else { return }
                 let mealSize = meal.mealSizes[currentPage]
                 strongSelf.updateView(with: meal,mealSize: mealSize)
-//                strongSelf.mealsCollection.reloadData()
             }}
-        
-//        orderDetailsViewModel.selectedMealSize.bind{
-//            [weak self] selectedMealSize in
-//            guard let strongSelf = self,let selectedMealSize = selectedMealSize else{return}
-//            DispatchQueue.main.async {
-////                selectedMealValueDidChanged
-//                if let index = strongSelf.orderDetailsViewModel.selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == selectedMealSize.imageName}){
-//                    strongSelf.orderDetailsViewModel.selectedMeal.value?.mealSizes[index] = selectedMealSize}
-//            }
-//        }
         orderDetailsViewModel.numOfItemsTuple.bind{
             [weak self] numOfItemsTuple in
             guard let strongSelf = self else{return}
@@ -85,14 +63,12 @@ class OrderDetailsVC: UIViewController {
                 strongSelf.orderDetailsViewModel.selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.numOfItems), mealSizeIndex: strongSelf.orderDetailsViewModel.currentPage.value)
                 guard let flag = numOfItemsTuple.isPlusBttnClickedflag else { return }
                 strongSelf.minusBttn.isUserInteractionEnabled = flag ? numOfItemsTuple.numOfItems > 0 : numOfItemsTuple.numOfItems != 0
-//                strongSelf.minusBttn.isUserInteractionEnabled =
                 var countOfCartItems = (Int(strongSelf.countOfCartItemsLabel.text ?? "") ?? 0)
                 countOfCartItems =  flag ? countOfCartItems + 1 : countOfCartItems - 1
                 print(countOfCartItems)
                 strongSelf.countOfCartItemsLabel.text = "\(countOfCartItems)"
                 strongSelf.countOfCartItemsView.isHidden = countOfCartItems == 0
-                
-//                strongSelf.orderAmountLabel.text = "\(numOfItemsTuple.numOfItems)"
+       
                 
             }
             
@@ -116,12 +92,8 @@ class OrderDetailsVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         optionsCollection.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
         orderDetailsViewModel.viewWillAppear()
-//        currentPage = 0
+
         print(orderDetailsViewModel.selectedMeal.value)
-//        orderDetailsViewModel.selectedMealSize = orderDetailsViewModel.selectedMeal.value?.mealSizes[currentPage]
-//        guard let selectedMealSize = selectedMealSize else{return}
-//                    self.numOfItemsTuple.value = (numOfItems:selectedMealSize.orderAmount,isPlusBttnClickedflag:nil)
-//        if let selectedMeal = selectedMeal{ updateView(with: selectedMeal)}
     }
 
     @objc func updateCountOfCartItemsByNotification(_ notification:Notification){
@@ -143,9 +115,6 @@ class OrderDetailsVC: UIViewController {
         mealsCollection.dataSource = self
         mealsCollection.register(UINib(nibName: "CarouselBurgerCell", bundle: nil), forCellWithReuseIdentifier: "CarouselBurgerCell")
         
-//        if let layout = mealsCollection.collectionViewLayout as? UPCarouselFlowLayout{
-//            layout.spacingMode = .fixed(spacing: 30)
-//        }
         
         self.mealsCollection.showsHorizontalScrollIndicator = false
          
@@ -161,14 +130,8 @@ class OrderDetailsVC: UIViewController {
 //         floawLayout.spacingMode = .fixed(spacing: -40)
          mealsCollection.collectionViewLayout = floawLayout
         
-//        if let bttn = self.quantityView.viewWithTag(500) as? UIButton {
-//            bttn.addTarget(self, action: #selector(didBttnTapped), for: .touchUpInside)
-//        }
     }
     
-//    @IBAction func didBttnTapped(_ sender: UIButton) {
-//        numOfItems += 1
-//    }
     @IBAction func didCardBttnTapped(_ sender: UIButton) {
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "showCarItems"), object: nil)
@@ -178,11 +141,6 @@ class OrderDetailsVC: UIViewController {
         self.popVCFromNav()
     }
 
-//    @objc func didBttnTapped(){
-//        numOfItems += 1
-//        print("mostafa")
-//
-//    }
     func updateView(with selectedMeal:Meal,mealSize: MealSize? = nil){
         print(mealSize)
         let meal_Size = mealSize == nil ? selectedMeal.mealSizes[0] : mealSize
@@ -193,13 +151,6 @@ class OrderDetailsVC: UIViewController {
         orderAmountLabel.text = "\(meal_Size!.orderAmount)"
     }
     
-//    var numOfItems = 0{
-//        didSet{
-//            orderAmountLabel.text = "\(numOfItems)"
-//            selectedMeal?.orderAmount = numOfItems
-//       //     updateQuantityPrice(numOfItems)
-//        }
-//    }
     
     @IBAction func plusBttnDidTapped(_ sender: UIButton) {
         
@@ -207,28 +158,14 @@ class OrderDetailsVC: UIViewController {
         let orderAmount = count != nil ? count : 0
         print(count,orderAmount,orderAmountLabel.text ?? "")
         orderDetailsViewModel.plusBttnDidTapped(currentCount: orderAmount!)
-        
-        
-//        if let count = Int(orderAmountLabel.text ?? ""),count != 0{
-//                    numOfItems = count }
-//                numOfItems += 1
-//
-//                minusBttn.isUserInteractionEnabled = numOfItems > 0
-//                let countOfCartItems = (Int(countOfCartItemsLabel.text ?? "") ?? 0) + 1
-//                print(countOfCartItems)
-//                countOfCartItemsLabel.text = "\(countOfCartItems)"
     }
-    //    @IBAction func plusBttnDidTapped(_ sender: UIButton) {
-//        numOfItems += 1
-//    }
+    
     @IBAction func minusBttnDidTapped(_ sender: UIButton) {
         
         let count = Int(orderAmountLabel.text ?? "")
         let orderAmount = count != nil && count! > 0 ? count : 0
         orderDetailsViewModel.minusBttnDidTapped(currentCount: orderAmount!)
-        
-        
-        
+
     }
     
     
@@ -238,28 +175,10 @@ class OrderDetailsVC: UIViewController {
         UIView.transition(with: animatedView, duration: 0.8, options: .transitionFlipFromTop, animations: {
             self.quantityLabel.isHidden.toggle()
             self.quantityView.isHidden.toggle()
-            
-//            self.orderAmountLabel.text = "\(self.orderDetailsViewModel.selectedMeal.value.orderAmount ?? 0)"
-
+    
             }, completion: {_ in
-        //        self.currentIndex = nextIndex
-            })}else{
-//                self.orderDetailsViewModel.addToCart()
+             })}else{
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "showCarItems"), object: nil)
-//                guard let selectedMeal = selectedMeal , selectedMeal.orderAmount > 0 else { return }
-//                let cartVC = CartVC()
-//
-//                if let selectedMealIndex = cartVC.shoppingCartMeals.firstIndex{$0.name == selectedMeal.name && $0.mealDesc == selectedMeal.mealDesc}{
-//                    cartVC.shoppingCartMeals[selectedMealIndex] = selectedMeal
-//                }else{
-//                    cartVC.shoppingCartMeals.append(selectedMeal)
-//                }
-//
-//                cartVC.upadateshoppingCartMeal = {
-//                    if $0.name == self.selectedMeal?.name && $0.mealDesc == self.selectedMeal?.mealDesc{
-//                        self.selectedMeal?.orderAmount = $0.orderAmount}
-//                }
-//                self.pushViewController(VC: cartVC)
             }
     }
     
@@ -268,19 +187,7 @@ class OrderDetailsVC: UIViewController {
         orderDetailsViewModel.searchSelectedMealSizeAndChange()
     }
     
-    @objc func didTimeOut(sender:UIButton) {
-
-//        let isLastIndex = (currentIndex == mainViews.count-1)
-//        let nextIndex = isLastIndex ? 0 : currentIndex+1
-//        print(currentIndex,nextIndex)
-        
-        
-             
-        
-                    
-//                    self.mainViews[self.currentIndex].isHidden = true
-//                    self.mainViews[nextIndex].isHidden = false
-                   
+    @objc func didTimeOut(sender:UIButton) {                   
         }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

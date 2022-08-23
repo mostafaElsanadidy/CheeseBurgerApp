@@ -13,10 +13,7 @@ class WishListVC: UIViewController {
     @IBOutlet weak var wishListCollection: UICollectionView!
     @IBOutlet weak var countOfCartItemsView: UIViewX!
     var wishListViewModel = WishListViewModel()
-//    var wishListMeals:[Meal] = []
-//    var upadateWishListMeal : ((_ meal:Meal,_ isDeletedState:Bool) -> ())!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

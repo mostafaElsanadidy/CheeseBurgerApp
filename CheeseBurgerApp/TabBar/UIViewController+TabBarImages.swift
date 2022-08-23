@@ -50,26 +50,13 @@ extension UIViewController{
             }
             
         let view = UIView.init(frame: CGRect.init(x: 0, y: -100, width: 50, height: 50))
-                     
-//        view.backgroundColor = #colorLiteral(red: 0.4549019608, green: 0.5411764706, blue: 0.6156862745, alpha: 1)
-//        view.layer.cornerRadius = 60/2
                                   
         let imageView = UIImageView.init(frame: CGRect.init(x: view.frame.size.width/2-height/2,y: view.frame.size.height/2-height/2, width: height, height: height))
-        
-        
-//        var realColor = UIColor()
-//
-//        if imageColor == #colorLiteral(red: 0.4549019608, green: 0.5411764706, blue:            0.6156862745, alpha: 1){
-//                realColor = .white
-//              }else{
-//                realColor = #colorLiteral(red: 1, green: 0.6470588235, blue: 0.4039215686, alpha: 1)
-//              }
         
         let imageColor = isSelectedState ? #colorLiteral(red: 0.8807975054, green: 0.5316982269, blue: 0.219119817, alpha: 1) : #colorLiteral(red: 0.7294118404, green: 0.7294118404, blue: 0.7294118404, alpha: 1)
         
         let image = UIImage(named: imageName)?.withTintColor(imageColor, renderingMode: renderingMode)
-//        let image = UIImage(named: imageName)?.withTintColor(imageColor, renderingMode: renderingMode)
-                      
+    
         imageView.image = image
         imageView.contentMode = .scaleToFill
         view.addSubview(imageView)

@@ -27,7 +27,6 @@ class BurgerCell: SwipeCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        islikedyouImageView.image = islikedyouImageView.image?.withTintColor(.white, renderingMode: .alwaysTemplate)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         islikedyouImageView.isUserInteractionEnabled = true
         islikedyouImageView.addGestureRecognizer(tapGestureRecognizer)
@@ -35,7 +34,6 @@ class BurgerCell: SwipeCollectionViewCell {
 
         @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
         {
-//            let tappedImage = tapGestureRecognizer.view as! UIImageView
             // Your action
             isLikedYou.toggle()
             toggleIsLikedYou(isLikedYou)
@@ -43,8 +41,6 @@ class BurgerCell: SwipeCollectionViewCell {
     
     
     override func prepareForReuse() {
-//        islikedyouImageView.image = islikedyouImageView.image?.withTintColor(.white, renderingMode: .alwaysTemplate)
-//        mealImageView.resized_Image()
     }
 
 }

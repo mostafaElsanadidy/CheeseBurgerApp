@@ -61,16 +61,7 @@ extension HomeVC:UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0 {
-        //    self.presenter?.loadRecipes()
-//            DispatchQueue.main.async {
-//                searchBar.resignFirstResponder()
-//            }
-        }else{
-//            guard let scopeButtonIndex = optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
-//
-//            filterForSearchTextAndScopeButton(searchText: searchText, scopeButtonIndex: searchBar.selectedScopeButtonIndex)
-        }
+        
         guard let scopeButtonIndex = optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
         print(scopeButtonIndex)
         filterForSearchTextAndScopeButton(searchText: searchText, scopeButtonIndex: scopeButtonIndex)

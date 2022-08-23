@@ -103,18 +103,12 @@ class TabbarController: UITabBarController,UITabBarControllerDelegate {
     
  
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        guard let myTabBar = tabBar as? CustomizedTabBar else{return}
-//          if (myTabBar.items?[3] == item) {
-//              myTabBar.arc = false
-//          } else {
-//              myTabBar.arc = true
-//          }
+
         
         if let tabBar = self.tabBar as? CustomTabbar{
             
             guard let items = tabBar.items, let vcIndex = items.firstIndex(of: item) else {return}
-        //    tabBar.selectedIndex = vcIndex
-//            tabBar.setNeedsDisplay()
+     
         }
       }
 }

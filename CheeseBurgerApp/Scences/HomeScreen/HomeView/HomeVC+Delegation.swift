@@ -90,17 +90,10 @@ extension HomeVC:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,Swi
 
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
-//            self.filteredMeals.remove(at: indexPath.row)
-            
-//            self.homeCollection.reloadData()
             action.fulfill(with: .delete)
             guard let scopeButtonIndex = self.optionsCollection.indexPathsForSelectedItems?.first?.row else {return}
             self.homeViewModel.arrayOfMeals.value[scopeButtonIndex].remove(at: indexPath.row)
-//            self.filteredMeals.remove(at: indexPath.row)
-//            fulfill(with: .delete)
         }
-//        deleteAction.transitionDelegate = ScaleTransition.default
-
         // customize the action appearance
         deleteAction.image = UIImage(named: "delete")
 

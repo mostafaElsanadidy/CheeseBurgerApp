@@ -14,7 +14,6 @@ class WishListCell: SwipeCollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mealDescLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-  //  @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var islikedyouView: UIViewX!
     @IBOutlet weak var islikedyouImageView: UIImageView!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -27,9 +26,6 @@ class WishListCell: SwipeCollectionViewCell {
     var numOfItems = 0{
         didSet{
             quantityLabel.text = "\(numOfItems)"
-//            if numOfItems == 0{
-//                self.delete(self)
-//            }
             updateQuantityPrice(numOfItems, isPlusBttnClickedflag)
         }
     }
@@ -50,8 +46,6 @@ class WishListCell: SwipeCollectionViewCell {
         let orderAmount = count != nil ? count : 0
         numOfItems = orderAmount! + 1
         self.minusBttn.isUserInteractionEnabled = numOfItems > 0
-//        guard let flag = self.isPlusBttnClickedflag else { return }
-        
     }
     
     @IBAction func minusBttnDidTapped(_ sender: UIButton) {

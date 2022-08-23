@@ -11,13 +11,12 @@ final class HomeList_VM {
     var arrayOfMeals :Observable<[[Meal]]> = Observable([])
     var searchBarFilters : Observable<[String]> = Observable([])
     var upadateWishListMeal : Observable<((_ meal:Meal,_ isDeletedState:Bool) -> ())> = Observable({_,_ in})
-//    var shoppingCartMeals:Observable<[Meal]> = Observable([])
+    
     var upadateshoppingCartMealTuple : Observable<(meals:[Meal],didTapped:(_ meal:Meal) -> ())> = Observable((meals:[],didTapped:{_ in }))
     var upadateSelectedMealTuple : Observable<(selectedMeal:Meal?,didTapped:(_ meal:Meal) -> ())> = Observable((selectedMeal:nil,didTapped:{_ in }))
     var countOfItems: Observable<String> = Observable("")
     var filteredMeals:Observable<[Meal]> = Observable([])
     var wishListMeals:Observable<[Meal]> = Observable([])
-//    var newArray:[Meal] = []
     
     
     func getAllMeals() {
@@ -74,15 +73,6 @@ let remainElements = [[Meal]].init(repeating: [], count: remainElementsCount)
                                                    didTapped: {
             meal in
             
-//            updateSelectedMealSize.value = {
-//                mealSize in
-//    //            let flag = ($0.imageName == mealSize.imageName && $0.price == mealSize.price)
-//    //            if flag{
-//                if let mealSizeIndex = self.selectedMeal.value?.mealSizes.firstIndex(where: {$0.imageName == mealSize.imageName && $0.price == mealSize.price}){
-//                    self.selectedMealWillChange(newOrderAmount: mealSize.orderAmount, mealSizeIndex: mealSizeIndex)}
-//    //            }
-//                
-//            }
             if let scopeIndex = self.searchBarFilters.value.firstIndex(where: {$0 == meal.mealDesc}),
                let modifiedMealIndex = self.arrayOfMeals.value[scopeIndex]
                 .firstIndex(where: {$0.name == meal.name}),
@@ -117,21 +107,6 @@ let remainElements = [[Meal]].init(repeating: [], count: remainElementsCount)
             newArray.append(meal)
         }
         
-//        let newIndexOfMeal = arr.compactMap{$0.mealSizes?.filter{$0.orderAmount>0}}
-//        for i in 0..<newIndexOfMeal.count{
-//            for j in newIndexOfMeal[i]{
-//                arr[i].mealSizes = j
-//                newArray.append(arr)
-//            }
-//        }
-//        let arrayOfCartMeals = arrayOfMeals.value.reduce([],+).map{$0.mealSizes = newIndexOfMeal[arrayOfMeals.listener.firstIndex(of: $0)]}
-//        reduce([Meal]()){
-//            meal , mealSize -> [Meal] in
-//            var cartMeal = meal
-//                cartMeal.mealSizes = [mealSize]
-//            return cartMeal
-//        }
-        
       return newArray
         
     }
@@ -159,7 +134,7 @@ let remainElements = [[Meal]].init(repeating: [], count: remainElementsCount)
     
     func searchbttnDidTapped(searchBarText:String, scopeButtonIndex:Int){
         if searchBarText != ""{
-//            let scopeButtonIndex = searchBar.selectedScopeButtonIndex
+            
             print(searchBarFilters.value[scopeButtonIndex])
             filteredMeals.value = arrayOfMeals.value.reduce([],+)
                 .filter{($0.mealDesc.caseInsensitiveCompare(searchBarFilters.value[scopeButtonIndex]) == .orderedSame) && ($0.name.localizedCaseInsensitiveContains(searchBarText))}

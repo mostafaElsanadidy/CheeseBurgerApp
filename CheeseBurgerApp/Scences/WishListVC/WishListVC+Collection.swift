@@ -18,7 +18,6 @@ extension WishListVC:UICollectionViewDataSource{
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WishListCell{
             
             let meal = wishListViewModel.wishListMeals.value[indexPath.row]
-//                cell.mealImageView.image = UIImage.init(named: meal.imageName)
                 cell.delegate = self
                 
                 cell.nameLabel.text = meal.name
@@ -26,14 +25,8 @@ extension WishListVC:UICollectionViewDataSource{
                 cell.priceLabel.text = "\(meal.price) \(meal.currency)"
             cell.quantityView.isHidden = true
             cell.islikedyouView.isHidden = false
-//                cell.mealImageView.resized_Image()
                 if let image = UIImage.init(named: meal.imageName)
-                {
-//                    cell.mealImageView.image = image.resizeImage(image: cell.mealImageView.image, targetSize: cell.mealImageView.frame.size)
-                    cell.burgerImageView.image = image
-//                        .resizedImage(withBounds: cell.burgerImageView.bounds.size)
-                }
-//                cell.islikedyouImageView.image = UIImage.init(named: meal.isLikedYou ? "selected heart" : "heart")
+                {   cell.burgerImageView.image = image   }
                 return cell
             }
         return UICollectionViewCell()
