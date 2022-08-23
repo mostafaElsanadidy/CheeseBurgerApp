@@ -49,8 +49,8 @@ final class OrderDetailsViewModel {
     }
     
     func minusBttnDidTapped(currentCount: Int) {
-         
-        numOfItemsTuple.value = (numOfItems: currentCount - 1 ,
+        
+            numOfItemsTuple.value = (numOfItems: currentCount > 0 ? currentCount - 1 : currentCount ,
                                  isPlusBttnClickedflag: false)
         
             
@@ -77,6 +77,9 @@ final class OrderDetailsViewModel {
         print(newOrderAmount)
         selectedMeal.value?.mealSizes[mealSizeIndex].orderAmount = newOrderAmount
 //        selectedMealSize?.orderAmount = newOrderAmount
+    }
+    func addToCart() {
+        selectedMealWillChange(newOrderAmount: Int(numOfItemsTuple.value.numOfItems), mealSizeIndex: currentPage.value)
     }
     
 }

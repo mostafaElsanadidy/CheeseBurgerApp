@@ -1,14 +1,14 @@
 //
-//  WishListCell.swift
+//  ShoppingCartCell.swift
 //  CheeseBurgerApp
 //
-//  Created by mostafa elsanadidy on 18.08.22.
+//  Created by mostafa elsanadidy on 22.08.22.
 //
 
 import UIKit
 import SwipeCellKit
 
-class WishListCell: SwipeCollectionViewCell {
+class ShoppingCartCell: SwipeTableViewCell {
 
     @IBOutlet weak var burgerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,12 +40,20 @@ class WishListCell: SwipeCollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         burgerImageView.layer.cornerRadius = 10
+     //   minusBttn.addTarget(self, action: #selector(minusDone), for: .touchUpInside)
+   //     contentView.bringSubviewToFront(quantityView)
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+print("mhiuhui")
+        // Configure the view for the selected state
     }
     
-    @IBAction func plusBttnDidTapped(_ sender: UIButton) {
-
-        isPlusBttnClickedflag = true
+    @IBAction func bttnPlusTapped() {
         
+        isPlusBttnClickedflag = true
+        print("bhbhbyhjbhjbjhbhjbhj")
         let count = Int(quantityLabel.text ?? "")
         let orderAmount = count != nil ? count : 0
         numOfItems = orderAmount! + 1
@@ -53,15 +61,24 @@ class WishListCell: SwipeCollectionViewCell {
 //        guard let flag = self.isPlusBttnClickedflag else { return }
         
     }
-    
-    @IBAction func minusBttnDidTapped(_ sender: UIButton) {
+   
+    @IBAction func bttnMinusTapped() {
         
         isPlusBttnClickedflag = false
         let count = Int(quantityLabel.text ?? "")
         print(count)
         let orderAmount = count != nil ? count : 0
         numOfItems = orderAmount! > 0 ? orderAmount! - 1 : orderAmount!
-        sender.isUserInteractionEnabled = numOfItems != 0
+        minusBttn.isUserInteractionEnabled = numOfItems != 0
     }
     
+   @objc func minusDone(){
+        
+        isPlusBttnClickedflag = false
+        let count = Int(quantityLabel.text ?? "")
+        print(count)
+        let orderAmount = count != nil ? count : 0
+        numOfItems = orderAmount! - 1
+        minusBttn.isUserInteractionEnabled = numOfItems != 0
+    }
 }

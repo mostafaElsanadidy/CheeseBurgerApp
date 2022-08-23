@@ -82,7 +82,7 @@ class HomeVC: UIViewController {
         homeViewModel.upadateshoppingCartMealTuple.bind{
             [weak self] tuple in
                 guard let strongSelf = self else{return}
-            let cartVC = CartVC()
+            let cartVC = ShoppingCartVC()
             cartVC.shoppingCartViewModel.shoppingCartMeals.value = tuple.meals
             cartVC.shoppingCartViewModel.updateShoppingCartMeal = tuple.didTapped
             strongSelf.pushViewController(VC: cartVC)

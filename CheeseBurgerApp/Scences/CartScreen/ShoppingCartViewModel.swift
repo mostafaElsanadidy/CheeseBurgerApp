@@ -31,6 +31,7 @@ final class ShoppingCartViewModel {
 //                collectionView.dele
             MealDidChanged(newValue: self.shoppingCartMeals.value[selectedIndex])}
     }
+    
 
     func totalPriceDidChange(){
         totalPrice.value = shoppingCartMeals.value.map{Double($0.mealSizes[0].orderAmount)*$0.mealSizes[0].price}.reduce(0, +)

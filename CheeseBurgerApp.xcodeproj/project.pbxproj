@@ -67,6 +67,12 @@
 		ED9D34B628ABF4E500A95A6E /* OptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9D34B428ABF4E500A95A6E /* OptionCell.xib */; };
 		EDABC84B28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABC84A28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift */; };
 		EDABE41A28AE5F4C00CB3EF5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABE41928AE5F4C00CB3EF5 /* Meal.swift */; };
+		EDADFABB28B4271B00BB203E /* ShoppingCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADFAB928B4271B00BB203E /* ShoppingCartVC.swift */; };
+		EDADFABC28B4271B00BB203E /* ShoppingCartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDADFABA28B4271B00BB203E /* ShoppingCartVC.xib */; };
+		EDADFAC028B428D000BB203E /* ShoppingCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADFABE28B428D000BB203E /* ShoppingCartCell.swift */; };
+		EDADFAC128B428D000BB203E /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDADFABF28B428D000BB203E /* ShoppingCartCell.xib */; };
+		EDADFAC328B42C6800BB203E /* ShoppingCartVC+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADFAC228B42C6800BB203E /* ShoppingCartVC+DataSource.swift */; };
+		EDADFAC528B4318C00BB203E /* ShoppingCartVC+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADFAC428B4318C00BB203E /* ShoppingCartVC+Delegation.swift */; };
 		EDE1887628AD1795004D0316 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1887428AD1795004D0316 /* OrderDetailsVC.swift */; };
 		EDE1887728AD1795004D0316 /* OrderDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE1887528AD1795004D0316 /* OrderDetailsVC.xib */; };
 		EDE1887928AD1E5F004D0316 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EDE1887828AD1E5F004D0316 /* Podfile */; };
@@ -165,6 +171,12 @@
 		ED9D34B428ABF4E500A95A6E /* OptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionCell.xib; sourceTree = "<group>"; };
 		EDABC84A28AC275C00C26B58 /* HomeVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		EDABE41928AE5F4C00CB3EF5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		EDADFAB928B4271B00BB203E /* ShoppingCartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartVC.swift; sourceTree = "<group>"; };
+		EDADFABA28B4271B00BB203E /* ShoppingCartVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartVC.xib; sourceTree = "<group>"; };
+		EDADFABE28B428D000BB203E /* ShoppingCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartCell.swift; sourceTree = "<group>"; };
+		EDADFABF28B428D000BB203E /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
+		EDADFAC228B42C6800BB203E /* ShoppingCartVC+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShoppingCartVC+DataSource.swift"; sourceTree = "<group>"; };
+		EDADFAC428B4318C00BB203E /* ShoppingCartVC+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShoppingCartVC+Delegation.swift"; sourceTree = "<group>"; };
 		EDE1887428AD1795004D0316 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		EDE1887528AD1795004D0316 /* OrderDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailsVC.xib; sourceTree = "<group>"; };
 		EDE1887828AD1E5F004D0316 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -341,6 +353,7 @@
 		ED17852928AAD3F7006E6306 /* Scences */ = {
 			isa = PBXGroup;
 			children = (
+				EDADFAB828B426BB00BB203E /* ShoppingCartScreen */,
 				ED04B45728B28EF2000AA688 /* ThirdTabVC */,
 				EDFC145F28B25E4A00799DAA /* SideMenuVC */,
 				ED0A56B828B0809700B7AA51 /* CartScreen */,
@@ -446,6 +459,27 @@
 				EDABE41928AE5F4C00CB3EF5 /* Meal.swift */,
 			);
 			path = Home_M;
+			sourceTree = "<group>";
+		};
+		EDADFAB828B426BB00BB203E /* ShoppingCartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EDADFABD28B4274C00BB203E /* ShoppingCartCell */,
+				EDADFAB928B4271B00BB203E /* ShoppingCartVC.swift */,
+				EDADFABA28B4271B00BB203E /* ShoppingCartVC.xib */,
+				EDADFAC228B42C6800BB203E /* ShoppingCartVC+DataSource.swift */,
+				EDADFAC428B4318C00BB203E /* ShoppingCartVC+Delegation.swift */,
+			);
+			path = ShoppingCartScreen;
+			sourceTree = "<group>";
+		};
+		EDADFABD28B4274C00BB203E /* ShoppingCartCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDADFABE28B428D000BB203E /* ShoppingCartCell.swift */,
+				EDADFABF28B428D000BB203E /* ShoppingCartCell.xib */,
+			);
+			path = ShoppingCartCell;
 			sourceTree = "<group>";
 		};
 		EDE1887328AD1778004D0316 /* OrderDetailsVC */ = {
@@ -594,11 +628,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDADFABC28B4271B00BB203E /* ShoppingCartVC.xib in Resources */,
 				EDE1887728AD1795004D0316 /* OrderDetailsVC.xib in Resources */,
 				ED17850628AAD3DE006E6306 /* LaunchScreen.storyboard in Resources */,
 				ED17852D28AAD440006E6306 /* HomeVC.xib in Resources */,
 				ED17853528AB0B50006E6306 /* BurgerCell.xib in Resources */,
 				ED080DF628ADB5F5000EFB10 /* WishListVC.xib in Resources */,
+				EDADFAC128B428D000BB203E /* ShoppingCartCell.xib in Resources */,
 				ED17853128AAD493006E6306 /* MealCell.xib in Resources */,
 				ED080DFA28ADB731000EFB10 /* WishListCell.xib in Resources */,
 				EDFC146C28B2653700799DAA /* SideMenuCell.xib in Resources */,
@@ -678,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED04B45A28B28F26000AA688 /* ThirdTabVC.swift in Sources */,
+				EDADFAC328B42C6800BB203E /* ShoppingCartVC+DataSource.swift in Sources */,
 				ED0A56CD28B0856E00B7AA51 /* UIButtonX.swift in Sources */,
 				ED05A4D328AC4A5900DB4638 /* UIView+AdditionalFeatures.swift in Sources */,
 				EDFF539A28B129290023033B /* Observer.swift in Sources */,
@@ -716,13 +753,16 @@
 				ED17852C28AAD440006E6306 /* HomeVC.swift in Sources */,
 				ED9D34A628ABDF4500A95A6E /* UIViewX.swift in Sources */,
 				ED080DED28AD3E51000EFB10 /* OrderDetailsVC+Delegation.swift in Sources */,
+				EDADFABB28B4271B00BB203E /* ShoppingCartVC.swift in Sources */,
 				ED0A56D528B0856E00B7AA51 /* UISliderX.swift in Sources */,
+				EDADFAC528B4318C00BB203E /* ShoppingCartVC+Delegation.swift in Sources */,
 				EDFF53A028B1BBF20023033B /* OrderDetailsViewModel.swift in Sources */,
 				ED17850128AAD3D8006E6306 /* CheeseBurgerApp.xcdatamodeld in Sources */,
 				ED0A56D928B08F3C00B7AA51 /* CartVC+Delegation.swift in Sources */,
 				ED9D349D28ABBA1800A95A6E /* AppDelegate_S.swift in Sources */,
 				ED9D349A28ABB74B00A95A6E /* CustomTabbar.swift in Sources */,
 				ED1784F728AAD3D8006E6306 /* AppDelegate.swift in Sources */,
+				EDADFAC028B428D000BB203E /* ShoppingCartCell.swift in Sources */,
 				ED1784F928AAD3D8006E6306 /* SceneDelegate.swift in Sources */,
 				ED0A56CC28B0856E00B7AA51 /* UITextFieldX.swift in Sources */,
 				ED9D349B28ABB74B00A95A6E /* TabbarController.swift in Sources */,

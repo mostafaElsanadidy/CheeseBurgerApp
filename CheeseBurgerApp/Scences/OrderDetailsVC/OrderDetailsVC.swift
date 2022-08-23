@@ -102,7 +102,7 @@ class OrderDetailsVC: UIViewController {
             [weak self] updateSelectedMealAction in
             guard let strongSelf = self else{return}
             DispatchQueue.main.async{
-                if let cartVC = strongSelf.navigationController?.topViewController as? CartVC{
+                if let cartVC = strongSelf.navigationController?.topViewController as? ShoppingCartVC{
                 cartVC.shoppingCartViewModel.updateSelectedMeal = updateSelectedMealAction
                 }
             }
@@ -224,7 +224,7 @@ class OrderDetailsVC: UIViewController {
     @IBAction func minusBttnDidTapped(_ sender: UIButton) {
         
         let count = Int(orderAmountLabel.text ?? "")
-        let orderAmount = count != nil ? count : 0
+        let orderAmount = count != nil && count! > 0 ? count : 0
         orderDetailsViewModel.minusBttnDidTapped(currentCount: orderAmount!)
         
         
@@ -244,7 +244,7 @@ class OrderDetailsVC: UIViewController {
             }, completion: {_ in
         //        self.currentIndex = nextIndex
             })}else{
-                
+//                self.orderDetailsViewModel.addToCart()
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "showCarItems"), object: nil)
 //                guard let selectedMeal = selectedMeal , selectedMeal.orderAmount > 0 else { return }
 //                let cartVC = CartVC()
