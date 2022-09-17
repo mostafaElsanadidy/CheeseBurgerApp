@@ -21,7 +21,7 @@ final class ShoppingCartViewModel {
         
         if quantityPrice == 0{
             
-            shoppingCartCellWillDelete(in: selectedIndex)
+//            shoppingCartCellWillDelete(in: selectedIndex)
             collectionWillDeleteCellIndex.value = selectedIndex
         }else{
             self.shoppingCartMeals.value[selectedIndex].mealSizes[0].orderAmount = quantityPrice

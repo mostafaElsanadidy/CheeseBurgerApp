@@ -78,7 +78,7 @@ class OrderDetailsVC: UIViewController {
             [weak self] updateSelectedMealAction in
             guard let strongSelf = self else{return}
             DispatchQueue.main.async{
-                if let cartVC = strongSelf.navigationController?.topViewController as? ShoppingCartVC{
+                if let cartVC = strongSelf.navigationController?.topViewController as? CartVC{
                 cartVC.shoppingCartViewModel.updateSelectedMeal = updateSelectedMealAction
                 }
             }
